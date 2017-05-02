@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Ingredient = () => (
-  <div>
+  <div className='column'>
     <p>ingredient</p>
   </div>
 );

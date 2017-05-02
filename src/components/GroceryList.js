@@ -4,8 +4,8 @@ import IngredientList from './IngredientList';
 export default class GroceryList extends Component {
   render() {
     return (
-      <div className='column row'>
-        <div className='column'>
+      <div className='ui row'>
+        <div className='ui divided three column grid stackable container '>
           <IngredientList />
           <IngredientList />
           <IngredientList />

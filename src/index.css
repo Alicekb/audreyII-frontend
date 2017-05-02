@@ -2,3 +2,12 @@ body {
   color: #83B692;
   background-color: #202C39;
 }
+
+.box {
+  background-color: #F2D492;
+  height: 15em;
+}
+
+h1 {
+  font-size: 2.5em;
+}

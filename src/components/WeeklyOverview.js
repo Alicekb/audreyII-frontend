@@ -4,14 +4,16 @@ import Day from './Day';
 export default class WeeklyOverview extends Component {
   render() {
     return (
-      <div>
-        <Day />
-        <Day />
-        <Day />
-        <Day />
-        <Day />
-        <Day />
-        <Day />
+      <div className='ui row'>
+        <div className='ui divided container seven column grid stackable'>
+          <Day />
+          <Day />
+          <Day />
+          <Day />
+          <Day />
+          <Day />
+          <Day />
+        </div>
       </div>
     );
   }
