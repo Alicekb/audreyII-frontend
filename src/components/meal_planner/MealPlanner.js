@@ -7,9 +7,9 @@ export default class MealPlanner extends Component {
   render() {
     return (
       <div>
-        <div className='ui fluid container left aligned grid planner stackable '>
+        <div className='ui container grid planner stackable'>
           <div className='two column row'>
-            <div className='column ui fluid container grid stackable'>
+            <div className='column ui container grid'>
               <MealList />
               <InfoCard />
             </div>

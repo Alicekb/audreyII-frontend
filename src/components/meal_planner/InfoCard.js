@@ -3,7 +3,6 @@ import Recipe from './info_card/recipe';
 
 const infoStyle = {
   backgroundColor: '#fff',
-  height: '48.5%',
   padding: '.7em'
 }
 

@@ -8,11 +8,19 @@ body {
   height: 15em;
 }
 
-.planner {
-  background-color: #F2D492;
-  height: 43em;
+@media (min-width:768px) {
+  .planner {
+    background-color: #F2D492;
+    height: 43em;
+  }
+
+  h1 {
+    font-size: 2.5em;
+  }
 }
 
-h1 {
-  font-size: 2.5em;
+@media (max-width:768px) {
+  body {
+    margin-left: 2.5em;
+  }
 }
