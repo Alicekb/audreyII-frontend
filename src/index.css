@@ -8,6 +8,11 @@ body {
   height: 15em;
 }
 
+.planner {
+  background-color: #F2D492;
+  height: 43em;
+}
+
 h1 {
   font-size: 2.5em;
 }
