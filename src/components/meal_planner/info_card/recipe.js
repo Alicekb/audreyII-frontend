@@ -1,7 +1,11 @@
 import React from 'react';
 
+const infoStyle= {
+  paddingLeft: '.5em'
+}
+
 const Recipe = () => (
-  <div className='container'>
+  <div className='container' style={infoStyle}>
     <h3>Ingredients List</h3>
     <ul role='list' className='ui list'>
       <li role='listitem' className='item'>1 medium-size whole chicken (about 4 lbs)</li>

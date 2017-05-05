@@ -2,7 +2,7 @@ import React from 'react';
 import Meal from './Meal';
 
 const mealStyle = {
-  paddingLeft: '.5em',
+  padding: '1em',
   backgroundColor: '#fff',
   height: '50%',
   marginBottom: '.5em'
