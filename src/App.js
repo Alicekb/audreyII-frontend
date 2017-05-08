@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Calendar from './components/calendar/Calendar';
+import Week from './components/week_planner/Week';
 import DayPlanner from './components/meal_planner/DayPlanner'
 import VerticalMenu from './components/nav/VerticalMenu';
 
@@ -11,7 +11,7 @@ class App extends Component {
       <div>
         <VerticalMenu />
         <Switch>
-          <Route path='/calendar' component={Calendar} />
+          <Route path='/week' component={Week} />
           <Route path='/planner' component={DayPlanner} />
         </Switch>
       </div>
