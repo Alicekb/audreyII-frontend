@@ -1,6 +1,8 @@
 body {
   color: #83B692;
   background-color: #202C39;
+  margin-top: 1em;
+  height: 100%
 }
 
 .box {
