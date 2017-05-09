@@ -11,8 +11,6 @@ const navContainerStyle = {
  width: '8%',
  background: '#fff',
  minHeight: '100vh',
- position: 'fixed',
- zIndex: '99'
 }
 
 const VerticalMenu = () => (
