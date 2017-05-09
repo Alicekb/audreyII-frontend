@@ -12,7 +12,7 @@ export default class Calendar extends Component {
         <VerticalMenu />
         <div className='ui center aligned grid'>
           <Date />
-          <div className='ui container grid planner'>
+          <div className='ui container grid'>
             <WeeklyOverview />
             <GroceryList />
 

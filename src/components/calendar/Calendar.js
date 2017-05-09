@@ -11,7 +11,7 @@ export default class Calendar extends Component {
         <VerticalMenu />
         <div className='ui center aligned grid'>
           <Date />
-          <div className='ui divided four column container grid planner stackable'>
+          <div className='ui divided four column container grid stackable'>
             <Month name={'January'} />
             <Month name={'February'} />
             <Month name={'March'} />
