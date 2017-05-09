@@ -7,10 +7,15 @@ const boxStyle = {
   backgroundColor: '#fff'
 }
 
+const boxContainer = {
+  padding: '1em',
+  background: '#fff'
+}
+
 const Main = () => (
   <div>
     <VerticalMenu />
-      <div className='ui container grid center aligned' style={{padding: '1em', background: '#fff'}}>
+      <div className='ui container grid center aligned' style={boxContainer}>
       <h1 className='row'>Welcome to Audrey II</h1>
       <div className='divided two column row stackable'>
         <div className='column' style={boxStyle}>

@@ -2,15 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const navStyle = {
-  paddingLeft: '1.5em',
+  paddingLeft: '1em',
   marginTop: '1em',
 }
 
 const navContainerStyle = {
  float: 'left',
- width: '8%',
+ width: '7%',
  background: '#fff',
  minHeight: '100vh',
+ marginRight: '.5em'
 }
 
 const VerticalMenu = () => (
