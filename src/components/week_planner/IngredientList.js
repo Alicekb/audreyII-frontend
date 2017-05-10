@@ -4,7 +4,7 @@ import Ingredient from './Ingredient';
 export default class IngredientList extends Component {
   render() {
     return(
-      <div className='column box'>
+      <div className='column'>
         <Ingredient />
         <Ingredient />
         <Ingredient />
