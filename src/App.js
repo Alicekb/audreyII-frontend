@@ -12,11 +12,11 @@ class App extends Component {
     return (
       <div>
         <Switch>
-          <Route exact path='/' component={Welcome}/>
+          <Route exact path='/' component={Home}/>
           <Route path='/week' component={Week} />
           <Route path='/planner' component={DayPlanner} />
           <Route path='/calendar' component={Calendar} />
-          <Route path='/logout' component={Home} />
+          <Route path='/loggedin' component={Welcome} />
         </Switch>
       </div>
     );

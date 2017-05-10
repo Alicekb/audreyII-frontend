@@ -14,7 +14,7 @@ const Signup = () => (
     </div>
 
     <button type='submit' className='ui button'>Sign-up</button>
-    <h4><Link to='/' classname='item'>Login instead</Link></h4>
+    <h4><Link to='/loggedin' classname='item'>Login instead</Link></h4>
   </form>
 );
 

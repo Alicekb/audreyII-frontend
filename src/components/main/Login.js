@@ -13,7 +13,7 @@ const Signin = () => (
       <input type='password'/>
     </div>
     <button type='submit' className='ui button'>Login</button>
-     <h4><Link to='/' classname='item'>Sign-up instead</Link></h4>
+     <h4><Link to='/loggedin' classname='item'>Sign-up instead</Link></h4>
   </form>
 );
 
