@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Week from './components/week_planner/Week';
-import DayPlanner from './components/meal_planner/DayPlanner'
-import Calendar from './components/calendar/Calendar';
-import Welcome from './components/main/Welcome';
-import Home from './components/main/Home';
+import Week from './components/Week_Planner/Week';
+import DayPlanner from './components/Meal_planner/DayPlanner'
+import Calendar from './components/Calendar/Calendar';
+import Welcome from './components/Main/Welcome';
+import Home from './components/Main/Home';
 
 class App extends Component {
   render() {

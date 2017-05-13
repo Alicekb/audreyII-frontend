@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import SearchBar from './search/SearchBar';
-import SearchResult from './search/SearchResult';
+import SearchBar from './Search/SearchBar';
+import SearchResult from './Search/SearchResult';
 
 export default class Search extends Component {
   render() {

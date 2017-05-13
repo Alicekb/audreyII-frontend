@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import VerticalMenu from '../nav/VerticalMenu'
+import VerticalMenu from '../Nav/VerticalMenu'
 
 const boxStyle = {
   backgroundColor: '#fff'

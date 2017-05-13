@@ -1,0 +1,12 @@
+.nav {
+  padding-left: 1em;
+  margin-top: 1em;
+}
+
+.nav-container {
+ float: left;
+ margin: 0;
+ width: 7%;
+ background: #fff;
+ min-height: 100vh;
+}

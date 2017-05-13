@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import VerticalMenu from '../nav/VerticalMenu';
+import VerticalMenu from '../Nav/VerticalMenu';
 import Date from '../Date';
 import WeeklyOverview from './WeeklyOverview';
 import GroceryList from './GroceryList';
