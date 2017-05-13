@@ -1,6 +1,3 @@
-html {
-  height: 100%;
-}
 body {
   color: #83B692;
   background: rgba(84,115,148,1);
@@ -13,8 +10,6 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#547394', endColorstr='#1d2833', GradientType=0 );
   background-repeat: no-repeat;
   background-attachment: fixed;
-  margin-top: 1em;
-  height: 100%;
 }
 
 .box {
@@ -28,8 +23,6 @@ body {
   }
 }
 
-@media (max-width:768px) {
-  body {
-    margin-left: 2.5em;
-  }
+.ui.grid {
+  margin-top: 0;
 }

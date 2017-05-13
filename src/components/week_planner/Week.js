@@ -10,9 +10,9 @@ export default class Calendar extends Component {
     return (
       <div>
         <VerticalMenu />
-        <div className='ui center aligned grid'>
+        <div className='ui center aligned grid container '>
           <Date />
-          <div className='ui container grid'>
+          <div className='ui grid'>
             <WeeklyOverview />
             <GroceryList />
 

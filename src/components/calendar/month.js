@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Month = ({ name }) => (
-  <div className='ui column box'>
+  <div className='column box'>
     <h2>{name}</h2>
     <Link to='/week/:id' className='item'>Week 1</Link><br />
     <Link to='/week/:id' className='item'>Week 2</Link><br />

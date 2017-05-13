@@ -8,10 +8,10 @@ const navStyle = {
 
 const navContainerStyle = {
  float: 'left',
+ margin: '0',
  width: '7%',
  background: '#fff',
  minHeight: '100vh',
- marginRight: '.5em'
 }
 
 const VerticalMenu = () => (

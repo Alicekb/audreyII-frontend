@@ -13,7 +13,7 @@ const homeStyle = {
 export default class Home extends Component {
   render() {
     return (
-      <div className='ui container grid center aligned' style={homeStyle}>
+      <div className='ui grid container center aligned' style={homeStyle}>
         <div className='ui divided two column row'>
           <div className='ui column' style={{background: '#fff', padding: '2em'}}>
             <h1>Audrey II</h1>

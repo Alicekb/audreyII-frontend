@@ -10,8 +10,8 @@ export default class DayPlanner extends Component {
       <div>
         <VerticalMenu />
         <div className='ui center aligned grid'>
-              <Date />
-              <MealPlanner />
+          <Date />
+          <MealPlanner />
         </div>
       </div>
     );

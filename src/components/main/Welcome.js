@@ -8,6 +8,8 @@ const boxStyle = {
 }
 
 const boxContainer = {
+  transform: 'translateY(25%)',
+  
   padding: '1em',
   background: '#fff'
 }
@@ -15,7 +17,7 @@ const boxContainer = {
 const Main = () => (
   <div>
     <VerticalMenu />
-      <div className='ui container grid center aligned' style={boxContainer}>
+    <div className='ui center aligned grid container ' style={boxContainer}>
       <h1 className='row'>Welcome to Audrey II</h1>
       <div className='divided two column row stackable'>
         <div className='column' style={boxStyle}>
@@ -42,8 +44,8 @@ const Main = () => (
           canvas holy grail agile development supply chain startup prototype buyer paradigm shift.
           MVP angel investor pitch monetization long tail funding user experience market influencer
           burn rate traction pivot validation.</p>
-        </div>
       </div>
+    </div>
 
       <Link to='/week/:id' className='ui fluid container'>
         <button className='ui fluid button'>Start</button>

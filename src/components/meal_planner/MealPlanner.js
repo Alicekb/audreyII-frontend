@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import MealList from './MealList';
 import InfoCard from './InfoCard';
 import Search from './Search';
@@ -7,9 +8,9 @@ export default class MealPlanner extends Component {
   render() {
     return (
       <div>
-        <div className='ui container grid stackable'>
+        <div className='ui grid container stackable'>
           <div className='two column row' style={{paddingBottom: '0'}}>
-            <div className='column ui container grid'>
+            <div className='ui column grid container'>
               <MealList />
               <InfoCard />
             </div>
