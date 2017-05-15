@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import Login from './Login';
 import Signup from './Signup';
 
+import logo from './logo.svg';
+
 const homeStyle = {
   position: 'absolute',
   top: '50%',
@@ -16,7 +18,8 @@ export default class Home extends Component {
       <div className='ui grid container center aligned' style={homeStyle}>
         <div className='ui divided two column row'>
           <div className='ui column' style={{background: '#fff', padding: '2em'}}>
-            <h1>Audrey II</h1>
+            <img src={logo} className="ui fluid tiny centered image" alt="logo" />
+            <h1 style={{marginTop: 0}}>Audrey II</h1>
             <p>Yummy java main course salt sustainable.
               Main course grocery shopping yummy lovely fruit dish cookie
               custard quinoa healthy pub luncheon. Salt lunch sushi
