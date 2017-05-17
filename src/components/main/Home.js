@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Login from './Login';
-import Signup from './Signup';
+import SignupForm from './SignupForm';
 
 import logo from './logo.svg';
 
@@ -34,7 +34,7 @@ export default class Home extends Component {
           </div>
 
           <div className='ui column' style={{background: '#fff', padding: '2em'}}>
-            <Signup />        
+            <SignupForm />        
           </div>
         </div>
       </div>
