@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import Login from './Login';
 import SignupForm from './SignupForm';
@@ -13,6 +14,13 @@ const homeStyle = {
 }
 
 export default class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loginForm: false
+    }
+
+  }
   render() {
     return (
       <div className='ui grid container center aligned' style={homeStyle}>
@@ -34,7 +42,13 @@ export default class Home extends Component {
           </div>
 
           <div className='ui column' style={{background: '#fff', padding: '2em'}}>
-            <SignupForm />        
+            {this.state.loginForm === true ? (<Login />) : (<SignupForm />)}
+            {this.state.loginForm === true ? (
+              <Link to='/loggedin' classname='item'>Signup instead</Link>
+              ) : (
+              <Link to='/loggedin' classname='item'>Login instead</Link>
+              )
+            }   
           </div>
         </div>
       </div>

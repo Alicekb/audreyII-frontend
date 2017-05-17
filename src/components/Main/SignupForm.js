@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 export default class SignupForm extends Component {
   constructor(props) {
@@ -46,7 +45,6 @@ export default class SignupForm extends Component {
         </div>
 
         <button type='submit' className='ui button'>Sign-up</button>
-        <h4><Link to='/loggedin' classname='item'>Login instead</Link></h4>
       </form>
     );
   }
