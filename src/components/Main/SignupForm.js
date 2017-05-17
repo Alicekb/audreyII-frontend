@@ -30,7 +30,8 @@ export default class SignupForm extends Component {
       >
         <div className='field'>
           <label>Username:</label>
-          <input 
+          <input
+            type='text' 
             placeholder='audrey2' 
             name='username'
             onChange={this.onChange.bind(this)}
@@ -40,6 +41,7 @@ export default class SignupForm extends Component {
         <div className='field'>
           <label>Email:</label>
           <input 
+            type='text'
             placeholder='audrey2@fake.com' 
             name='email'
             onChange={this.onChange.bind(this)}
@@ -48,7 +50,9 @@ export default class SignupForm extends Component {
         
         <div className='field'>
           <label>Password</label>
-          <input type='password'
+          <input 
+            type='password'
+            placeholder='*************'
             name='password'
             onChange={this.onChange.bind(this)}
           />
