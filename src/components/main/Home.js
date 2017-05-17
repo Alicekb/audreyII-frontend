@@ -19,8 +19,17 @@ export default class Home extends Component {
     this.state = {
       loginForm: false
     }
-
   }
+
+  onClick(e) {
+    e.preventDefault()
+    let showForm = !this.state.loginForm
+
+    this.setState({
+      loginForm: showForm
+    });
+  }
+
   render() {
     return (
       <div className='ui grid container center aligned' style={homeStyle}>
@@ -42,13 +51,31 @@ export default class Home extends Component {
           </div>
 
           <div className='ui column' style={{background: '#fff', padding: '2em'}}>
-            {this.state.loginForm === true ? (<Login />) : (<SignupForm />)}
             {this.state.loginForm === true ? (
-              <Link to='/loggedin' classname='item'>Signup instead</Link>
-              ) : (
-              <Link to='/loggedin' classname='item'>Login instead</Link>
-              )
-            }   
+              <span>
+                <Login />
+                <button 
+                  type='button' 
+                  className='ui button' 
+                  style={{background: 'none'}}
+                  onClick={ this.onClick.bind(this) }
+                >
+                  Signup instead
+                </button>
+              </span>
+            ) : (
+              <span>
+               <SignupForm />
+                <button 
+                  type='button' 
+                  className='ui button'
+                  style={{background: 'none'}} 
+                  onClick={ this.onClick.bind(this) }
+                >
+                  Login instead
+                </button>
+              </span>
+            )}  
           </div>
         </div>
       </div>
