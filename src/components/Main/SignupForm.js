@@ -4,6 +4,7 @@ export default class SignupForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      username: '',
       email: '',
       password: ''
     }
@@ -23,10 +24,19 @@ export default class SignupForm extends Component {
   render() {
     return (
       <form 
-        className='ui form fluid container' 
+        className='ui form fluid left aligned container' 
         style={{padding: '2em', color: '#83B692'}}
         onSubmit={this.onSubmit.bind(this)}
       >
+        <div className='field'>
+          <label>Username:</label>
+          <input 
+            placeholder='audrey2' 
+            name='username'
+            onChange={this.onChange.bind(this)}
+          />
+        </div>
+
         <div className='field'>
           <label>Email:</label>
           <input 
