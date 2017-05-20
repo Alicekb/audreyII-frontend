@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Week from './components/Week_Planner/Week';
+import Week from './components/Week_planner/Week'
 import DayPlanner from './components/Meal_planner/DayPlanner'
 import Calendar from './components/Calendar/Calendar';
 import Welcome from './components/Main/Welcome';
