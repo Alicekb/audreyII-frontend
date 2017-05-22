@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import Login from './Login';
-import SignupForm from './SignupForm';
-
 import logo from './logo.svg';
+
+import Login from './Login';
+import SignupForm from './Forms/SignupForm';
 
 const homeStyle = {
   position: 'absolute',
