@@ -4,7 +4,7 @@ import validate from './Validations/ValidateSignup';
 import RenderField from './RenderField.js';
 
 const SignupForm = props => {
-  const {handleSubmit, pristine, reset, submitting} = props
+  const {handleSubmit, pristine, reset, submitting, invalid} = props
   return (
     <form
       className='ui form fluid left aligned container'
@@ -48,7 +48,7 @@ const SignupForm = props => {
         <label>Password Confirmation</label>
         <div>
           <Field
-            name="confirmation"
+            name="password_confirmation"
             type="password"
             component={RenderField}
           />
@@ -56,7 +56,7 @@ const SignupForm = props => {
       </div>
       
       <div>
-        <button type="submit" disabled={pristine || submitting}>Submit</button>
+        <button type="submit" disabled={pristine || submitting || invalid}>Submit</button>
         <button type="button" disabled={pristine || submitting} onClick={reset}>
           Clear Values
         </button>
