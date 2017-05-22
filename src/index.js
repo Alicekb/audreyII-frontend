@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
-
-import App from './App';
+import { Provider } from 'react-redux';
 
 import './semantic/dist/semantic.min.css';
 import './index.css';
+import App from './App';
+import store from './store';
 
 ReactDOM.render(
-  <Router>
+  <Provider store={store}>
     <App />
-  </Router>,
+  </Provider>,
   document.getElementById('root')
 );
