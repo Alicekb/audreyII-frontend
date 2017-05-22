@@ -1,6 +1,6 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
-import validate from './Validations/ValidateSignup';
+import validate from './Validate';
 import RenderField from './RenderField.js';
 
 const SignupForm = props => {
