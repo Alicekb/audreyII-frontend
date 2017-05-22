@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import logo from './logo.svg';
 
-import Login from './Login';
+import LoginForm from './Forms/LoginForm';
 import SignupForm from './Forms/SignupForm';
 
 const homeStyle = {
@@ -52,7 +52,7 @@ export default class Home extends Component {
           <div className='ui column' style={{background: '#fff', padding: '2em'}}>
             {this.state.loginForm === true ? (
               <span>
-                <Login />
+                <LoginForm />
                 <button 
                   type='button' 
                   className='ui button' 
