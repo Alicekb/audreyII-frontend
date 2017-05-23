@@ -2,8 +2,14 @@ import React, { Component } from 'react';
 import {Field, reduxForm} from 'redux-form';
 import RenderField from './RenderField.js';
 import validate from './Validate';
+import PropTypes from 'prop-types';
 
 class SignupForm extends Component {
+  static propTypes = { 
+    handleSubmit: PropTypes.func 
+  }
+
+
   handleSubmit(data) {
     this.props.onSubmit(data)
   }
