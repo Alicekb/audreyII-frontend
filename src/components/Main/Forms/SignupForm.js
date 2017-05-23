@@ -3,19 +3,17 @@ import {Field, reduxForm} from 'redux-form';
 import RenderField from './RenderField.js';
 import validate from './Validate';
 
-import { signup } from '../../../actions/auth';
-
 class SignupForm extends Component {
-
+  handleSubmit(data) {
+    this.props.onSubmit(data)
+  }
   render() {
     const {handleSubmit, pristine, reset, submitting, invalid} = this.props
     return (
       <form
         className='ui form fluid left aligned container'
         style={{padding: '2em', color: '#83B692'}}
-        onSubmit={handleSubmit(
-          data => {signup(data)}
-        )}
+        onSubmit={handleSubmit(this.handleSubmit.bind(this))}
       >
         <div>
           <label>Username</label>

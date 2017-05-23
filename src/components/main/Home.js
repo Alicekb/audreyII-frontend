@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 import logo from './logo.svg';
 
 import LoginForm from './Forms/LoginForm';
 import SignupForm from './Forms/SignupForm';
+import { signup } from '../../actions/auth'
 
 const homeStyle = {
   position: 'absolute',
@@ -12,7 +13,7 @@ const homeStyle = {
   transform: 'translate(-50%, -50%)'
 }
 
-export default class Home extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,6 +28,10 @@ export default class Home extends Component {
     this.setState({
       loginForm: showForm
     });
+  }
+
+  handleSignup = (data) => {
+    this.props.signup({user: data})
   }
 
   render() {
@@ -64,7 +69,7 @@ export default class Home extends Component {
               </span>
             ) : (
               <span>
-               <SignupForm />
+               <SignupForm onSubmit={this.handleSignup}/>
                 <button 
                   type='button' 
                   className='ui button'
@@ -81,3 +86,5 @@ export default class Home extends Component {
    );
   }
 }
+
+export default connect(undefined, {signup})(Home)
