@@ -26,22 +26,40 @@ export const signup = (userData) => {
   return dispatch => {
     dispatch(authRequest())
     return sessionApi.new(userData)
-    .then(res => {
-      return sessionApi.auth(res)
-        .then(res => {
-          const { user, auth_token} = res
-          localStorage.setItem('token', auth_token)
-          dispatch(authSuccess(user, auth_token))
-          dispatch(reset('signup'))
-        })
-        .catch(error => {
-          dispatch(authFailure(error))
-          throw new SubmissionError(error)
-        })
-    }).catch(error => {
-      console.log(error)
-      dispatch(authFailure(error))
-      throw new SubmissionError(error)
-    })
+      .then(res => {
+        return sessionApi.auth(res)
+          .then(res => {
+            const { user, auth_token} = res
+            localStorage.setItem('token', auth_token)
+            dispatch(authSuccess(user, auth_token))
+            dispatch(reset('signup'))
+          })
+          .catch(error => {
+            dispatch(authFailure(error))
+            throw new SubmissionError(error)
+          })
+      })
+      .catch(error => {
+        console.log(error)
+        dispatch(authFailure(error))
+        throw new SubmissionError(error)
+      })
+  }
+}
+
+export const login = (userData) => {
+  return dispatch => {
+    dispatch(authRequest())
+    return sessionApi.auth(userData)
+      .then(res => {
+        const { user, auth_token} = res
+        localStorage.setItem('token', auth_token)        
+        dispatch(authSuccess(user, auth_token))
+        dispatch(reset('login'))
+      })
+      .catch(error => {
+        dispatch(authFailure(error))
+        throw new SubmissionError(error)
+      })
   }
 }

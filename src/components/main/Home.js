@@ -4,7 +4,7 @@ import logo from './logo.svg';
 
 import LoginForm from './Forms/LoginForm';
 import SignupForm from './Forms/SignupForm';
-import { signup } from '../../actions/auth'
+import { signup, login } from '../../actions/auth'
 
 const homeStyle = {
   position: 'absolute',
@@ -31,7 +31,11 @@ class Home extends Component {
   }
 
   handleSignup = (data) => {
-    this.props.signup({user: data})
+    this.props.signup(data)
+  }
+
+  handleLogin = (data) => {
+    this.props.login(data)
   }
 
   render() {
@@ -57,7 +61,7 @@ class Home extends Component {
           <div className='ui column' style={{background: '#fff', padding: '2em'}}>
             {this.state.loginForm === true ? (
               <span>
-                <LoginForm />
+                <LoginForm onSubmit={this.handleLogin}/>
                 <button 
                   type='button' 
                   className='ui button' 
@@ -87,4 +91,4 @@ class Home extends Component {
   }
 }
 
-export default connect(undefined, {signup})(Home)
+export default connect(undefined, {signup, login })(Home)

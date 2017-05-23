@@ -19,7 +19,7 @@ export default {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
-    const body = JSON.stringify(userData)
+    const body = JSON.stringify({user: userData})
 
     return fetch(NEW_URL, {
       method: 'post',
@@ -35,7 +35,7 @@ export default {
       'Content-Type': 'application/json'
     }
     const body = JSON.stringify(userData)
-
+    debugger
     return fetch(AUTH_URL, {
       method: 'post',
       headers: headers,
