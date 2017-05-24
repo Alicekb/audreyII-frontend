@@ -63,3 +63,18 @@ export const login = (userData) => {
       })
   }
 }
+
+export const tokenSignup = (token) => {
+  return dispatch => {
+    dispatch(authRequest())
+    return sessionApi.refresh(token)
+      .then(res => {
+        const { user } = res
+        dispatch(authSuccess(user))
+      })
+      .catch(error => {
+        dispatch(authFailure(error))
+        throw new SubmissionError(error)
+      })
+  }
+}

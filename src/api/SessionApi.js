@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch'
 
 const NEW_URL = 'http://localhost:3001/signup'
 const AUTH_URL = 'http://localhost:3001/auth_user'
+const TOKEN_URL = 'http://localhost:3001/auth_token'
 
 const parseRes = (res) => {
   return res.json()
@@ -39,6 +40,19 @@ export default {
       method: 'post',
       headers: headers,
       body: body
+    }).then(parseRes)
+    .catch(error => console.log(error));
+  },
+
+  refresh(userToken) {
+    const headers =  {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': userToken
+    }
+    return fetch(TOKEN_URL, {
+      method: 'get',
+      headers: headers
     }).then(parseRes)
     .catch(error => console.log(error));
   }
