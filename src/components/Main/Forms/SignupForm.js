@@ -9,7 +9,6 @@ class SignupForm extends Component {
     handleSubmit: PropTypes.func 
   }
 
-
   handleSubmit(data) {
     this.props.onSubmit(data)
   }
