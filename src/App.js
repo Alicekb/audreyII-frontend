@@ -13,7 +13,9 @@ import Calendar from './components/Calendar/Calendar';
 import Welcome from './components/Main/Welcome';
 import Home from './components/Main/Home';
 import NoMatch from './components/Nav/NoMatch';
+import VerticalMenu from './components/Nav/VerticalMenu';
 import { tokenSignup } from './actions/auth';
+
 
 
 class App extends Component {
@@ -33,6 +35,7 @@ class App extends Component {
     return (
       <Router>
         <div>
+          <VerticalMenu />
           <Switch>
             <Route exact path='/' render={() => (
               this.props.isAuthenticated ? (

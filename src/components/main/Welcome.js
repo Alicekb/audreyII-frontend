@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import VerticalMenu from '../Nav/VerticalMenu'
-
 const boxStyle = {
   backgroundColor: '#fff'
 }
@@ -16,7 +14,6 @@ const boxContainer = {
 
 const Main = () => (
   <div>
-    <VerticalMenu />
     <div className='ui center aligned grid container ' style={boxContainer}>
       <h1 className='row'>Welcome to Audrey II</h1>
       <div className='divided two column row stackable'>

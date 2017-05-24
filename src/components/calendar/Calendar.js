@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import VerticalMenu from '../Nav/VerticalMenu';
 import Date from '../Date';
 import Month from './Month';
 
@@ -8,7 +7,6 @@ export default class Calendar extends Component {
   render() {
     return (
       <div>
-        <VerticalMenu />
         <div className='ui center aligned grid'>
           <Date />
           <div className='ui divided four column container grid stackable'>
