@@ -48,7 +48,7 @@ class App extends Component {
             )}/>
             <Route path='/week' component={Week} />
             <Route path='/planner' component={DayPlanner} />
-            <Route path='/calendar' component={Calendar} />
+            <Route path="/calendar" component={() => (<Calendar id={this.props.currentUser.current_calendar}/>)}/>
             <Route exact path='/welcome' render={() => (
               !this.props.isAuthenticated ? (
                 <Redirect to='/' />
