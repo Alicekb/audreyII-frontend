@@ -23,6 +23,5 @@ export default {
       method: 'get',
       headers: headers,
     }).then(parseRes)
-    .catch(error => console.log(error));
   }
 }
