@@ -22,6 +22,12 @@ const authFailure = (errors) => {
   }
 }
 
+const signout = () => {
+  return {
+    type: 'LOGOUT'
+  }
+}
+
 export const signup = (userData) => {
   return dispatch => {
     dispatch(authRequest())
@@ -76,5 +82,11 @@ export const tokenSignup = (token) => {
         dispatch(authFailure(error))
         throw new SubmissionError(error)
       })
+  }
+}
+export const logout = () => {
+  return dispatch => {
+    dispatch(signout())
+    localStorage.removeItem('token')
   }
 }

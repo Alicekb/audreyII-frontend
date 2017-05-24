@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 const nav = {
@@ -14,16 +14,29 @@ const navContainer = {
  minHeight: '100vh'
 }
 
-const VerticalMenu = () => (
-  <div className='ui vertical menu' style={navContainer}>
-    <div style={nav}>
-      <h4><Link to='/welcome'>Home</Link></h4>
-      <h4><Link to='/week'>Week</Link></h4>
-      <h4><Link to='/planner'>Planner</Link></h4>
-      <h4><Link to='/calendar'>Calendar</Link></h4>
-      <h4><Link to='/'>Log Out</Link></h4>
-    </div>
-  </div>
-);
+export default class VerticalMenu extends Component {
+  handleLogout = () => {
+    this.props.logout()
+  }
 
-export default VerticalMenu;
+  render() {
+    return(
+      <div>
+        {
+          this.props.loggedIn ?
+            <div className='ui vertical menu' style={navContainer}>
+              <div style={nav}>
+                <h4><Link to='/welcome'>Home</Link></h4>
+                <h4><Link to='/week'>Week</Link></h4>
+                <h4><Link to='/planner'>Planner</Link></h4>
+                <h4><Link to='/calendar'>Calendar</Link></h4>
+                <h4><Link to='/' onClick={this.handleLogout}>Log Out</Link></h4>
+              </div>
+            </div> :
+            null
+        }
+      </div>
+
+    )
+  }
+}

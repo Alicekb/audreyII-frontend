@@ -14,13 +14,15 @@ import Welcome from './components/Main/Welcome';
 import Home from './components/Main/Home';
 import NoMatch from './components/Nav/NoMatch';
 import VerticalMenu from './components/Nav/VerticalMenu';
-import { tokenSignup } from './actions/auth';
+
+import { tokenSignup, logout } from './actions/auth';
 
 
 
 class App extends Component {
   static propTypes = { 
-    tokenSignup: PropTypes.func
+    tokenSignup: PropTypes.func,
+    loggedIn: PropTypes.func
   }
 
   componentDidMount() {
@@ -35,7 +37,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <VerticalMenu />
+          <VerticalMenu logout={this.props.logout} loggedIn={this.props.isAuthenticated}/>
           <Switch>
             <Route exact path='/' render={() => (
               this.props.isAuthenticated ? (
@@ -69,5 +71,5 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { tokenSignup })(App);
+export default connect(mapStateToProps, { tokenSignup, logout })(App);
 
