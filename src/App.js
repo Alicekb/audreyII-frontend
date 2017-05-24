@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { 
   BrowserRouter as Router,
   Switch,
+  Redirect,
   Route } from 'react-router-dom';
 import {  } from 'react-router-dom';
 
@@ -12,6 +13,10 @@ import Welcome from './components/Main/Welcome';
 import Home from './components/Main/Home';
 
 class App extends Component {
+  // componentDidMount() {
+  //   const token = localStorat
+  // }
+  
   render() {
     return (
       <Router>
@@ -19,6 +24,9 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Home}/>
             <Route path='/week' component={Week} />
+            <Route exact path='/bad' render={()=> (
+              <Redirect to='/' />
+            )} />
             <Route path='/planner' component={DayPlanner} />
             <Route path='/calendar' component={Calendar} />
             <Route path='/loggedin' component={Welcome} />

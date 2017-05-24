@@ -35,7 +35,6 @@ export default {
       'Content-Type': 'application/json'
     }
     const body = JSON.stringify(userData)
-    debugger
     return fetch(AUTH_URL, {
       method: 'post',
       headers: headers,
