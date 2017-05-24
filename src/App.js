@@ -12,6 +12,7 @@ import DayPlanner from './components/Meal_planner/DayPlanner'
 import Calendar from './components/Calendar/Calendar';
 import Welcome from './components/Main/Welcome';
 import Home from './components/Main/Home';
+import NoMatch from './components/Nav/NoMatch';
 import { tokenSignup } from './actions/auth';
 
 
@@ -50,6 +51,7 @@ class App extends Component {
                 <Welcome />
               )
             )}/>
+            <Route component={NoMatch}/>
           </Switch>
         </div>
       </Router>
