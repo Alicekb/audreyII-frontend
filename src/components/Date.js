@@ -1,8 +1,12 @@
 import React from 'react';
 
-const Date = () => (
+const Date = ({week, year}) => (
   <div className='column row' style={{padding: '0'}}>
-    <h1>May - Week 18 - 2017</h1>
+    {!!week ? (
+      <h1>week {week} - {year}</h1>
+    ) : (
+      <h1>{year}</h1>
+    )}
   </div>
 );
 

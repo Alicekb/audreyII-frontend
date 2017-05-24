@@ -41,7 +41,7 @@ export default class Calendar extends Component {
     return (
       <div>
         <div className='ui center aligned grid'>
-          <Date />
+          <Date year={this.state.year}/>
           <div className='ui divided four column container grid stackable'>
             <Month name={'January'} />
             <Month name={'February'} />
