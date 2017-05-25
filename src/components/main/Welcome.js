@@ -44,7 +44,7 @@ const Main = () => (
       </div>
     </div>
 
-      <Link to='/week/:id' className='ui fluid container'>
+      <Link to='/calendar' className='ui fluid container'>
         <button className='ui fluid button'>Start</button>
       </Link>
 
