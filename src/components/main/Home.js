@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 import logo from './logo.svg';
 
 import LoginForm from './Forms/LoginForm';
@@ -39,6 +40,10 @@ class Home extends Component {
   }
 
   render() {
+    if (!!this.props.loggedIn) {
+      return <Redirect to='/welcome' />
+    }
+
     return (
       <div className='ui grid container center aligned' style={homeStyle}>
         <div className='ui divided two column row'>

@@ -59,6 +59,10 @@ export default class Calendar extends Component {
       }}/>
     }
 
+    if (!this.props.loggedIn) {
+      return <Redirect to='/' />
+    }
+
     const weeks = <div className='ui divided four column container grid'>
         {this.state.weeks.map((id, index) => {
           return <button 

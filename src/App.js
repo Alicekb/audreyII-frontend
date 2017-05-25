@@ -37,18 +37,19 @@ class App extends Component {
         <div>
           <VerticalMenu logout={this.props.logout} loggedIn={this.props.isAuthenticated}/>
           <Switch>
-            <Route exact path='/' render={() => (
-              this.props.isAuthenticated ? (
-                <Redirect to='/welcome' push/>
-              ) : (
-                <Home />
-              )
-            )}/>
-
+            <Route exact path="/" 
+              component={() => (<Home
+                loggedIn={this.props.isAuthenticated}/>)
+              }
+            />
             <Route path="/week" component={Week} />
             <Route path='/planner' component={DayPlanner} />
-            <Route path="/calendar" component={() => (<Calendar id={this.props.currentUser.current_calendar}/>)}/>
-
+            <Route path="/calendar" 
+              component={() => (<Calendar 
+                id={this.props.currentUser.current_calendar} 
+                loggedIn={this.props.isAuthenticated}/>)
+              }
+            />
             <Route exact path='/welcome' render={() => (
               !this.props.isAuthenticated ? (
                 <Redirect to='/' push/>
@@ -56,6 +57,7 @@ class App extends Component {
                 <Welcome />
               )
             )}/>
+
             <Route component={NoMatch}/>
           </Switch>
         </div>
