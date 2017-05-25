@@ -2,15 +2,23 @@ import React, { Component } from 'react';
 import audreyApi from '../../api/AudreyApi';
 
 import Date from '../Date';
-import Month from './Month';
+import { Redirect } from 'react-router-dom';
+
+const buttonStyle = {
+  backgroundColor: '#fff',
+  border: 0
+}
 
 export default class Calendar extends Component {
   constructor(props) {
     super(props);
     this.state = {
       year: '',
-      weeks: []
+      weeks: [],
+      redirect: false,
+      weekId: 0
     };
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
@@ -36,21 +44,47 @@ export default class Calendar extends Component {
     })
   }
 
+  handleClick(id) {
+    this.setState({
+      redirect: true,
+      weekId: id
+    })
+  }
 
   render() {
+    if (!!this.state.redirect) {
+      return <Redirect to={{
+        pathname: '/weeks',
+        state: {id: this.state.weekId, year: this.state.year}  
+      }}/>
+    }
+
+    const weeks = <div className='ui divided four column container grid'>
+        {this.state.weeks.map((id, index) => {
+          return <button 
+            type="button" 
+            className='column text vertical center' 
+            style={buttonStyle} 
+            key={id} 
+            onClick={() => { this.handleClick(id)}}
+          >
+            <h3 style={{marginTop: 0}}>
+              Week {index}
+            </h3>
+          </button>
+        })
+        }
+      </div>
+
     return (
       <div>
         <div className='ui center aligned grid'>
           <Date year={this.state.year}/>
-          <div className='ui divided four column container grid stackable'>
-            <Month name={'January'} />
-            <Month name={'February'} />
-            <Month name={'March'} />
-            <Month name={'April'} />
-            <Month name={'May'} />
-          </div>
+            {weeks}
         </div>
       </div>
     )
   }
 }
+
+

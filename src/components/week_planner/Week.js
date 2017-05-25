@@ -9,7 +9,7 @@ export default class Calendar extends Component {
     return (
       <div>
         <div className='ui center aligned grid container '>
-          <Date />
+          <Date year={this.props.location.state.year}/>
           <div className='ui grid'>
             <WeeklyOverview />
             <GroceryList />

@@ -41,17 +41,20 @@ class App extends Component {
           <Switch>
             <Route exact path='/' render={() => (
               this.props.isAuthenticated ? (
-                <Redirect to='/welcome' />
+                <Redirect to='/welcome' push/>
               ) : (
                 <Home />
               )
             )}/>
-            <Route path='/week' component={Week} />
+
+            <Route path='/weeks' component={Week} />
+
             <Route path='/planner' component={DayPlanner} />
             <Route path="/calendar" component={() => (<Calendar id={this.props.currentUser.current_calendar}/>)}/>
+
             <Route exact path='/welcome' render={() => (
               !this.props.isAuthenticated ? (
-                <Redirect to='/' />
+                <Redirect to='/' push/>
               ) : (
                 <Welcome />
               )
