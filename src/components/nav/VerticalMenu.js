@@ -27,8 +27,6 @@ export default class VerticalMenu extends Component {
             <div className='ui vertical menu' style={navContainer}>
               <div style={nav}>
                 <h4><Link to='/welcome'>Home</Link></h4>
-                <h4><Link to='/week'>Week</Link></h4>
-                <h4><Link to='/planner'>Planner</Link></h4>
                 <h4><Link to='/calendar'>Calendar</Link></h4>
                 <h4><Link to='/' onClick={this.handleLogout}>Log Out</Link></h4>
               </div>
