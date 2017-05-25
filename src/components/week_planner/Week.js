@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import Date from '../Date';
 import WeeklyOverview from './WeeklyOverview';
@@ -6,6 +7,10 @@ import GroceryList from './GroceryList';
 
 export default class Calendar extends Component {
   render() {
+    if (!this.props.location.state) {
+      return <Redirect to='/' push/>
+    }
+
     return (
       <div>
         <div className='ui center aligned grid container '>

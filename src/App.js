@@ -17,8 +17,6 @@ import VerticalMenu from './components/Nav/VerticalMenu';
 
 import { tokenSignup, logout } from './actions/auth';
 
-
-
 class App extends Component {
   static propTypes = { 
     tokenSignup: PropTypes.func,
@@ -32,7 +30,7 @@ class App extends Component {
       this.props.tokenSignup(token)
     }
   }
-  
+
   render() {
     return (
       <Router>
@@ -47,8 +45,7 @@ class App extends Component {
               )
             )}/>
 
-            <Route path='/weeks' component={Week} />
-
+            <Route path="/week" component={Week} />
             <Route path='/planner' component={DayPlanner} />
             <Route path="/calendar" component={() => (<Calendar id={this.props.currentUser.current_calendar}/>)}/>
 

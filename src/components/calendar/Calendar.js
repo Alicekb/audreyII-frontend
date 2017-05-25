@@ -54,7 +54,7 @@ export default class Calendar extends Component {
   render() {
     if (!!this.state.redirect) {
       return <Redirect to={{
-        pathname: '/weeks',
+        pathname: '/week',
         state: {id: this.state.weekId, year: this.state.year}  
       }}/>
     }
