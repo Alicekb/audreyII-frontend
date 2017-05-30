@@ -63,28 +63,28 @@ export default class Calendar extends Component {
       return <Redirect push to='/' />
     }
 
-    const weeks = <div className='ui divided four column container grid'>
-        {this.state.weeks.map((id, index) => {
-          return <button 
-            type="button" 
-            className='column text vertical center' 
-            style={buttonStyle} 
-            key={id} 
-            onClick={() => { this.handleClick(id)}}
-          >
-            <h3 style={{marginTop: 0}}>
-              Week { index + 1 }
-            </h3>
-          </button>
-        })
-        }
-      </div>
+    const weeks = 
+      this.state.weeks.map((id, index) => {
+        return <button 
+          type="button" 
+          className='column text vertical center' 
+          style={buttonStyle} 
+          key={id} 
+          onClick={() => { this.handleClick(id)}}
+        >
+          <h3 style={{marginTop: 0}}>
+            Week { index + 1 }
+          </h3>
+        </button>
+      })
 
     return (
       <div>
         <div className='ui center aligned grid'>
           <Date year={this.state.year}/>
-            {weeks}
+            <div className='ui divided four column container grid'>
+              {weeks}
+            </div>
         </div>
       </div>
     )
