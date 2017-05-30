@@ -41,7 +41,7 @@ class Home extends Component {
 
   render() {
     if (!!this.props.loggedIn) {
-      return <Redirect to='/welcome' />
+      return <Redirect push to='/welcome' />
     }
 
     return (
