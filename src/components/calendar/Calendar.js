@@ -55,7 +55,7 @@ export default class Calendar extends Component {
     if (!!this.state.redirect) {
       return <Redirect push to={{
         pathname: '/week',
-        state: {id: this.state.weekId, year: this.state.year}  
+        state: {id: this.state.weekId , year: this.state.year}  
       }}/>
     }
 
@@ -73,7 +73,7 @@ export default class Calendar extends Component {
             onClick={() => { this.handleClick(id)}}
           >
             <h3 style={{marginTop: 0}}>
-              Week {index}
+              Week { index + 1 }
             </h3>
           </button>
         })
