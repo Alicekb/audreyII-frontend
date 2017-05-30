@@ -1,6 +1,7 @@
 const initState = {
   requestingWeek: false,
   daysArray: [],
+  meals: [],
   errors: {}
 }
 
@@ -16,7 +17,8 @@ export default (state = initState, action) => {
       return {
         ...state,
         requestingWeek: false,
-        daysArray: action.days
+        daysArray: action.days,
+        meals: action.meals
       }
 
     case 'WEEK_FAILURE':

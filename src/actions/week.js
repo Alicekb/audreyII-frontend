@@ -6,10 +6,11 @@ const weekRequest = () => {
   }
 }
 
-const weekSuccess = (days) => {
+const weekSuccess = (days, meals) => {
   return {
     type: 'WEEK_SUCCESS',
     days: days,
+    meals: meals
   }
 }
 
@@ -31,8 +32,8 @@ export const fetchWeek = (id, token) => {
     dispatch(weekRequest())
     return audreyApi.getWeek(id, token)
       .then(res => {
-        const { days } = res      
-        dispatch(weekSuccess(days))
+        const { days, meals } = res      
+        dispatch(weekSuccess(days, meals))
       })
       .catch(error => {
         dispatch(weekFailure(error))
