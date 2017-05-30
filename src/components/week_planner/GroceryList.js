@@ -1,23 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-const GroceryList = () => (
+const GroceryList = (props) => (
    <div className='row'>
-      <div className='ui divided three column stackable grid container' style={{background: '#fff'}}>
+      <div className='ui divided four column grid container' style={{background: '#fff'}}>
         <h2><u>Groceries</u></h2>
-        <div className='column'>
-          <div className='column'>
-            <p>ingredient</p>
-          </div>
-          <div className='column'>
-            <p>ingredient</p>
-          </div>
-          <div className='column'>
-            <p>ingredient</p>
-          </div>
-          <div className='column'>
-            <p>ingredient</p>
-          </div>
-        </div>
+        {
+          props.ingredients.map((ingredients) => {
+          return <ul className='column'>
+            {ingredients.map((ingredient) => {
+              return <li>{ingredient}</li>
+            })}
+          </ul>
+          })
+        }
       </div>
   </div>
 )

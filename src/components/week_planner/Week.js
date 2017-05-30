@@ -24,7 +24,10 @@ class Week extends Component {
     const days = this.props.daysArray.map((day, index) => {
       return <Day key={index} name={day.day_name}/>
     })
-    
+    const ingredients = this.props.meals.map((meal, index, array) => {
+      return meal.ingredients.split(', ')
+    })
+
     return (
       <div>
         <div className='ui center aligned grid container '>
@@ -35,7 +38,7 @@ class Week extends Component {
                 {days}
               </div>
             </div>
-            <GroceryList />
+            <GroceryList ingredients={ingredients}/>
 
             <div className='two column row' style={{paddingTop: '0'}}>
               <div className='column'>
@@ -56,7 +59,8 @@ class Week extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    daysArray: state.week.daysArray
+    daysArray: state.week.daysArray,
+    meals: state.week.meals
   }
 }
 

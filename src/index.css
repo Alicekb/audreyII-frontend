@@ -12,6 +12,10 @@ body {
   background-attachment: fixed;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .box {
   background-color: #fff;
   height: 15em;
