@@ -34,7 +34,7 @@ export default (state = initState, action) => {
       }
 
     case 'LOGOUT':
-      return Object.assign({}, initState);
+      return Object.assign({}, initState)
 
     default:
       return state;
