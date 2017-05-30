@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { fetchWeek, resetWeek } from '../../actions/week';
 
 import Date from '../Date';
 import GroceryList from './GroceryList';
@@ -8,22 +9,22 @@ import Day from './Day';
 
 class Week extends Component {
   componentDidMount() {
-    if (!this.props.location.state) {
-      return <Redirect to='/' push/>
-    }
+    if (!this.props.location.state) return <Redirect to='/' push/>
 
-    // const id = this.props.location.state.id
+    this.props.fetchWeek(this.props.location.state.id, localStorage.getItem('token'))
+  }
+
+  componentWillUnmount() {
+    this.props.resetWeek()
   }
 
   render() {
-    if (!this.props.location.state) {
-      return <Redirect to='/' push/>
-    }
+    if (!this.props.location.state) return <Redirect to='/' push/>
 
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map((day, index) => {
+    const days = this.props.daysArray.map((day, index) => {
       return <Day key={index}/>
     })
-
+    
     return (
       <div>
         <div className='ui center aligned grid container '>
@@ -59,4 +60,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {})(Week);
+export default connect(mapStateToProps, { fetchWeek, resetWeek })(Week);

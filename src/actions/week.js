@@ -1,4 +1,4 @@
-import audreyApi from '../api/audreyApi';
+import audreyApi from '../api/AudreyApi';
 
 const weekRequest = () => {
   return {
@@ -20,6 +20,12 @@ const weekFailure = (errors) => {
   }
 }
 
+const weekReset = () => {
+  return {
+    type: 'WEEK_RESET'
+  }
+}
+
 export const fetchWeek = (id, token) => {
   return dispatch => {
     dispatch(weekRequest())
@@ -29,8 +35,13 @@ export const fetchWeek = (id, token) => {
         dispatch(weekSuccess(days))
       })
       .catch(error => {
-        dispatch(authFailure(error))
-        throw new SubmissionError(error)
+        dispatch(weekFailure(error))
       })
+  }
+}
+
+export const resetWeek = () => {
+  return dispatch => {
+    dispatch(weekReset())
   }
 }

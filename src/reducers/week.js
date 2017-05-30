@@ -26,7 +26,7 @@ export default (state = initState, action) => {
         errors: action.errors || {}
       }
 
-    case 'RESET':
+    case 'WEEK_RESET':
       return Object.assign({}, initState)
 
     default:
