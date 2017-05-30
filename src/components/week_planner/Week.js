@@ -22,7 +22,7 @@ class Week extends Component {
     if (!this.props.location.state) return <Redirect to='/' push/>
 
     const days = this.props.daysArray.map((day, index) => {
-      return <Day key={index}/>
+      return <Day key={index} name={day.day_name}/>
     })
     
     return (

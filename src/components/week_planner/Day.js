@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Day = () => (
-  <div className='column box'>
-    <p>Day!</p>
-  </div>
+const Day = (props) => (
+  <a href='#' className='column box'>
+    <p>{props.name}</p>
+  </a>
 );
 
 export default Day;
