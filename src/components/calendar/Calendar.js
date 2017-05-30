@@ -37,7 +37,6 @@ export default class Calendar extends Component {
     calendar.weeks.forEach((week) => {
       weeksArray.push(week.id)
     })
-
     this.setState({
       year: calendar.year,
       weeks: weeksArray
@@ -64,12 +63,12 @@ export default class Calendar extends Component {
     }
 
     const weeks = 
-      this.state.weeks.map((id) => {
+      this.state.weeks.map((id, index) => {
         return <button 
           type="button" 
           className='column text vertical center' 
           style={buttonStyle} 
-          key={id} 
+          key={index} 
           onClick={() => { this.handleClick(id)}}
         >
           <h3 style={{marginTop: 0}}>
