@@ -5,7 +5,7 @@ import Date from '../Date';
 import WeeklyOverview from './WeeklyOverview';
 import GroceryList from './GroceryList';
 
-export default class Calendar extends Component {
+export default class Week extends Component {
   render() {
     if (!this.props.location.state) {
       return <Redirect to='/' push/>
@@ -16,7 +16,7 @@ export default class Calendar extends Component {
         <div className='ui center aligned grid container '>
           <Date week={this.props.location.state.id } year={this.props.location.state.year}/>
           <div className='ui grid'>
-            <WeeklyOverview />
+            <WeeklyOverview/>
             <GroceryList />
 
             <div className='two column row' style={{paddingTop: '0'}}>
@@ -35,3 +35,11 @@ export default class Calendar extends Component {
     );
   }
 }
+
+// const mapStateToProps = (state) => {
+//   return {
+//     daysArray: state.week.days
+//   }
+// }
+
+// export default connect(mapStateToProps, {})(Week);
