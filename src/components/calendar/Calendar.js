@@ -53,14 +53,14 @@ export default class Calendar extends Component {
 
   render() {
     if (!!this.state.redirect) {
-      return <Redirect to={{
+      return <Redirect push to={{
         pathname: '/week',
         state: {id: this.state.weekId, year: this.state.year}  
       }}/>
     }
 
     if (!this.props.loggedIn) {
-      return <Redirect to='/' />
+      return <Redirect push to='/' />
     }
 
     const weeks = <div className='ui divided four column container grid'>

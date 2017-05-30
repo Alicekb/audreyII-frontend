@@ -52,7 +52,7 @@ class App extends Component {
             />
             <Route exact path='/welcome' render={() => (
               !this.props.isAuthenticated ? (
-                <Redirect to='/' push/>
+                <Redirect push to='/' />
               ) : (
                 <Welcome />
               )
