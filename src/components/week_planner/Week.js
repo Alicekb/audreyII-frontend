@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchWeek, resetWeek } from '../../actions/week';
 
@@ -27,6 +27,10 @@ class Week extends Component {
     return results;
   }
 
+  handleBack = () => {
+    return <Redirect to='/calendar' push/>
+  }
+
   render() {
     if (!this.props.location.state) return <Redirect to='/' push/>
 
@@ -50,7 +54,7 @@ class Week extends Component {
 
             <div className='two column row' style={{paddingTop: '0'}}>
               <div className='column'>
-                <button className='ui fluid button'>Save</button>
+                <Link to='/calendar'><button className='ui fluid button'>Back</button></Link>
               </div>
 
               <div className='column'>
