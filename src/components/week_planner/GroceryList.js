@@ -1,18 +1,17 @@
 import React from 'react';
+import shortid from 'shortid';
 
 const GroceryList = (props) => (
    <div className='row'>
       <div className='ui divided four column grid container' style={{background: '#fff'}}>
         <h2><u>Groceries</u></h2>
-        {
-          props.ingredients.map((ingredients) => {
-          return <ul className='column'>
-            {ingredients.map((ingredient) => {
-              return <li>{ingredient}</li>
+        { props.ingredients.map((ingredients, index) => {
+          return <ul key={shortid.generate()} className='column'>
+            { ingredients.map((ingredient)=> {
+                return <li key={shortid.generate()}>{ingredient}</li>
             })}
           </ul>
-          })
-        }
+        })}
       </div>
   </div>
 )

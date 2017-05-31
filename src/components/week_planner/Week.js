@@ -18,15 +18,22 @@ class Week extends Component {
     this.props.resetWeek()
   }
 
+  chunkArray(array, chunk_size){
+    var results = [];
+    while (array.length) {
+        results.push(array.splice(0, chunk_size));
+    }
+    return results;
+  }
+
   render() {
     if (!this.props.location.state) return <Redirect to='/' push/>
 
     const days = this.props.daysArray.map((day, index) => {
       return <Day key={index} name={day.day_name}/>
     })
-    const ingredients = this.props.meals.map((meal, index, array) => {
-      return meal.ingredients.split(', ')
-    })
+
+    const ingredientsArray = this.chunkArray(this.props.ingredients, 5)
 
     return (
       <div>
@@ -38,7 +45,7 @@ class Week extends Component {
                 {days}
               </div>
             </div>
-            <GroceryList ingredients={ingredients}/>
+            <GroceryList ingredients={ingredientsArray}/>
 
             <div className='two column row' style={{paddingTop: '0'}}>
               <div className='column'>
@@ -60,7 +67,8 @@ class Week extends Component {
 const mapStateToProps = (state) => {
   return {
     daysArray: state.week.daysArray,
-    meals: state.week.meals
+    meals: state.week.meals,
+    ingredients: state.week.ingredients
   }
 }
 
