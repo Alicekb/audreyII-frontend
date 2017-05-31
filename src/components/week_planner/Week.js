@@ -19,9 +19,10 @@ class Week extends Component {
   }
 
   chunkArray(array, chunk_size){
+    var newArray = array.slice(0)
     var results = [];
-    while (array.length) {
-        results.push(array.splice(0, chunk_size));
+    while (newArray.length) {
+        results.push(newArray.splice(0, chunk_size));
     }
     return results;
   }
@@ -32,7 +33,7 @@ class Week extends Component {
     const days = this.props.daysArray.map((day, index) => {
       return <Day key={index} name={day.day_name}/>
     })
-
+    debugger
     const ingredientsArray = this.chunkArray(this.props.ingredients, 5)
 
     return (
