@@ -33,7 +33,7 @@ class Week extends Component {
     const days = this.props.daysArray.map((day, index) => {
       return <Day key={index} name={day.day_name}/>
     })
-    debugger
+
     const ingredientsArray = this.chunkArray(this.props.ingredients, 5)
 
     return (
