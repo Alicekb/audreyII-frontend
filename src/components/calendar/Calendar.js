@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import audreyApi from '../../api/AudreyApi';
+import shortid from 'shortid';
 
 import Date from '../Date';
 import { Redirect } from 'react-router-dom';
@@ -63,12 +64,12 @@ export default class Calendar extends Component {
     }
 
     const weeks = 
-      this.state.weeks.map((id, index) => {
+      this.state.weeks.map((id) => {
         return <button 
           type="button" 
           className='column text vertical center' 
           style={buttonStyle} 
-          key={index} 
+          key={shortid.generate()} 
           onClick={() => { this.handleClick(id)}}
         >
           <h3 style={{marginTop: 0}}>

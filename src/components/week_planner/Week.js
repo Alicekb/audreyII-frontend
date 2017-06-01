@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchWeek, resetWeek } from '../../actions/week';
+import shortid from 'shortid';
 
 import Date from '../Date';
 import GroceryList from './GroceryList';
@@ -34,8 +35,8 @@ class Week extends Component {
   render() {
     if (!this.props.location.state) return <Redirect to='/' push/>
 
-    const days = this.props.daysArray.map((day, index) => {
-      return <Day key={index} name={day.day_name}/>
+    const days = this.props.daysArray.map((day) => {
+      return <Day key={shortid.generate()} name={day.day_name}/>
     })
 
     const ingredientsArray = this.chunkArray(this.props.ingredients, 5)
@@ -64,7 +65,7 @@ class Week extends Component {
           </div>
           
         </div>
-      </div>      
+      </div>
     );
   }
 }
