@@ -23,7 +23,8 @@ ul {
 
 @media (min-width:768px) {
   h1 {
-    font-size: 3.5em;
+    font-size: 3em;
+    margin: 0;
   }
 }
 

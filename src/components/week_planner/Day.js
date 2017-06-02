@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Day = ({name, id, handleClick }) => (
-  <button type="button" className='column box' style={{border: 0}} onClick={() => handleClick(id)}> 
-      <h3>{name}</h3>
-  </button>
+const Day = ({name, id}) => (
+  <Link className='column box' to={`/week/planner/${id}`} > 
+    <h3>{name}</h3> 
+  </Link>
 );
 
 export default Day;

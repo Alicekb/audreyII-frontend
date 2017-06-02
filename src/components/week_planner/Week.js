@@ -28,23 +28,14 @@ class Week extends Component {
     return results;
   }
 
-  handleBack = () => {
-    return <Redirect to='/calendar' push/>
-  }
-
-  handleDayClick = (id) => {
-    console.log(id)
-  }
-
   render() {
-    if (!this.props.location.state) return <Redirect to='/' push/>
+    if (!this.props.location.state) return <Redirect push to='/'/>
 
     const days = this.props.daysArray.map((day) => {
       return <Day 
         key={shortid.generate()}
         id={day.id}
         name={day.day_name}
-        handleClick={this.handleDayClick}
       />
     })
 

@@ -42,8 +42,8 @@ class App extends Component {
                 loggedIn={this.props.isAuthenticated}/>)
               }
             />
-            <Route path="/week" component={Week} />
-            <Route path='/planner' component={DayPlanner} />
+            <Route exact path="/week" component={Week} />
+            <Route path='/week/planner/:id' component={DayPlanner} />
             <Route path="/calendar" 
               component={() => (<Calendar 
                 id={this.props.currentUser.current_calendar} 
