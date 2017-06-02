@@ -32,11 +32,20 @@ class Week extends Component {
     return <Redirect to='/calendar' push/>
   }
 
+  handleDayClick = (id) => {
+    console.log(id)
+  }
+
   render() {
     if (!this.props.location.state) return <Redirect to='/' push/>
 
     const days = this.props.daysArray.map((day) => {
-      return <Day key={shortid.generate()} name={day.day_name}/>
+      return <Day 
+        key={shortid.generate()}
+        id={day.id}
+        name={day.day_name}
+        handleClick={this.handleDayClick}
+      />
     })
 
     const ingredientsArray = this.chunkArray(this.props.ingredients, 5)
