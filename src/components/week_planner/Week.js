@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchWeek, resetWeek } from '../../actions/week';
 import shortid from 'shortid';
@@ -10,8 +10,6 @@ import Day from './Day';
 
 class Week extends Component {
   componentDidMount() {
-    if (!this.props.location.state) return <Redirect to='/' push/>
-
     this.props.fetchWeek(this.props.location.state.id, localStorage.getItem('token'))
   }
 
@@ -29,8 +27,6 @@ class Week extends Component {
   }
 
   render() {
-    if (!this.props.location.state) return <Redirect push to='/'/>
-
     const days = this.props.daysArray.map((day) => {
       return <Day 
         key={shortid.generate()}

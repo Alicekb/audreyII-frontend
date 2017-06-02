@@ -59,10 +59,6 @@ export default class Calendar extends Component {
       }}/>
     }
 
-    if (!this.props.loggedIn) {
-      return <Redirect push to='/' />
-    }
-
     const weeks = 
       this.state.weeks.map((id) => {
         return <button 

@@ -32,6 +32,17 @@ class App extends Component {
   }
 
   render() {
+    const PrivateRoute = ({ component: Component, ...rest }) => (
+      <Route {...rest} render={props => (
+        this.props.isAuthenticated ? (
+          <Component {...props}/>
+          ) : (
+            <Redirect to={{
+              pathname: '/',
+            }}/>
+          )
+      )}/>
+    )
     return (
       <Router>
         <div>
@@ -42,31 +53,25 @@ class App extends Component {
                 loggedIn={this.props.isAuthenticated}/>)
               }
             />
-            <Route exact path="/week" component={Week} />
+            <PrivateRoute exact path="/week" component={Week}/>
             <Route path='/week/:name/:id' 
-              render={({ match }) => { 
+              render={({ match }) => {
                 const id = match.params.id
                 const name = match.params.name
-                return ( <MealPlanner id={id} name={name}/> 
-                  ); 
+                return ( this.props.isAuthenticated ? (
+                  <MealPlanner id={id} name={name}/> ) : (
+                    <Redirect push to='/welcome'/>
+                  )
+                ); 
               }}
             />
-
-            <Route path="/calendar" 
-              component={() => (<Calendar 
-                id={this.props.currentUser.current_calendar} 
-                loggedIn={this.props.isAuthenticated}/>)
+            <PrivateRoute path="/calendar" 
+              component={() => (<Calendar
+                id={this.props.currentUser.current_calendar}/>)
               }
             />
-            <Route exact path='/welcome' render={() => (
-              !this.props.isAuthenticated ? (
-                <Redirect push to='/' />
-              ) : (
-                <Welcome />
-              )
-            )}/>
-
-            <Route component={NoMatch}/>
+            <PrivateRoute path="/welcome" component={Welcome}/>
+            <PrivateRoute component={NoMatch}/>
           </Switch>
         </div>
       </Router>
