@@ -43,14 +43,14 @@ class App extends Component {
               }
             />
             <Route exact path="/week" component={Week} />
-            <Route path='/week/planner/:id' 
+            <Route path='/week/:name/:id' 
               render={({ match }) => { 
                 const id = match.params.id
-                return ( <MealPlanner id={id} /> 
+                const name = match.params.name
+                return ( <MealPlanner id={id} name={name}/> 
                   ); 
               }}
             />
-
 
             <Route path="/calendar" 
               component={() => (<Calendar 
