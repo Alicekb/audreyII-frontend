@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 
 import Week from './components/Week_planner/Week'
-import DayPlanner from './components/Meal_planner/DayPlanner'
+import MealPlanner from './components/Meal_planner/MealPlanner'
 import Calendar from './components/Calendar/Calendar';
 import Welcome from './components/Main/Welcome';
 import Home from './components/Main/Home';
@@ -43,7 +43,15 @@ class App extends Component {
               }
             />
             <Route exact path="/week" component={Week} />
-            <Route path='/week/planner/:id' component={DayPlanner} />
+            <Route path='/week/planner/:id' 
+              render={({ match }) => { 
+                const id = match.params.id
+                return ( <MealPlanner id={id} /> 
+                  ); 
+              }}
+            />
+
+
             <Route path="/calendar" 
               component={() => (<Calendar 
                 id={this.props.currentUser.current_calendar} 
