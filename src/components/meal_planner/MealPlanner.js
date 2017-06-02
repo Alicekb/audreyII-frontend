@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import MealList from './MealList';
 import InfoCard from './InfoCard';
 import Search from './Search';
-import Date from '../Date';
 
 export default class MealPlanner extends Component {
   render() {
