@@ -10,7 +10,7 @@ import Day from './Day';
 
 class Week extends Component {
   componentDidMount() {
-    this.props.fetchWeek(this.props.location.state.id, localStorage.getItem('token'))
+    this.props.fetchWeek(this.props.location.state.id, 'http://localhost:3001/v1/weeks/', localStorage.getItem('token'))
   }
 
   componentWillUnmount() {

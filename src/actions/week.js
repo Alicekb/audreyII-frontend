@@ -28,10 +28,10 @@ const weekReset = () => {
   }
 }
 
-export const fetchWeek = (id, token) => {
+export const fetchWeek = (id, url, token) => {
   return dispatch => {
     dispatch(weekRequest())
-    return audreyApi.getWeek(id, token)
+    return audreyApi.getData(id, url, token)
       .then(res => {
         const { days, meals } = res
         const ingredientArray = meals.map((meal) => { return meal.ingredients.split(', ')})

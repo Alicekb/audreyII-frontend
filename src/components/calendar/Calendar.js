@@ -23,8 +23,7 @@ export default class Calendar extends Component {
   }
 
   componentDidMount() {
-    const id = this.props.id
-    return audreyApi.getCal(id, localStorage.getItem('token'))
+    return audreyApi.getData(this.props.id, 'http://localhost:3001/v1/calendars/', localStorage.getItem('token'))
       .then(res => {
         if (res === undefined) {
           return null
