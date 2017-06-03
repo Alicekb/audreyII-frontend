@@ -1,5 +1,4 @@
 import React from 'react';
-import Meal from './Meal';
 
 const mealStyle = {
   padding: '1em',
@@ -8,14 +7,12 @@ const mealStyle = {
   marginBottom: '.5em'
 }
 
-const MealList = () => (
+const MealList = ({ meals }) => (
   <div className='row container' style={mealStyle}>
-    <Meal name={'Sunday Supper: Jerk Half-Chickens'}/>
-    <Meal name={'Herbes de Provence Rotisserie Chickens'}/>
-    <Meal name={'Sage Pesto Roasted Chicken'}/>
-    <Meal name={'Classic Roast Chicken Recipe'}/>
-    <Meal name={'Chicken Broth Elixir'}/>
-    <Meal name={'Mustard-Crusted Roast Chickens'}/>
+    { meals.map((meal) => {
+      return <button className='ui fluid button'>{meal.name}</button>
+    })
+    }
   </div>
 )
 
