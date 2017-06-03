@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import audreyApi from '../../api/AudreyApi';
 import MealList from './MealList';
 import InfoCard from './InfoCard';
 import Search from './Search';
@@ -13,40 +14,32 @@ export default class MealPlanner extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      meals: [
-        {
-          id: 1,
-          name: 'Super Speed',
-          recipe: 'http://www.speedforce.com',
-          ingredients: 'speedforce, lightning, chemicals'
-        },
-        {
-          id: 1,
-          name: 'Gadgets',
-          recipe: 'http://www.batman.com',
-          ingredients: 'money, more money, lots and lots of money'
-        },
-        {
-          id: 1,
-          name: 'Chicken Pot Pie',
-          recipe: 'http://www.getthechicken.com',
-          ingredients: 'carrots, pie, chicken, sause, potatoes'
-        },
-        {
-          id: 1,
-          name: 'Godlike',
-          recipe: 'http://www.kyrpton.com',
-          ingredients: 'yellow sunlight, kyrptonian cells'
+    return audreyApi.getData(this.props.id,'http://localhost:3001/v1/days/',localStorage.getItem('token'))
+      .then(res => {
+        if (res === undefined ) {
+          return null
         }
-      ]
-    });  
+        this.setState({
+          meals: res.meals
+        })
+      })
   }
 
-
+  mealArray(meals) {
+    let newArray = meals.slice(0)
+    let results = []
+    newArray.map((meal) => {
+      return results.push(<button className='ui fluid button'>{meal.name}</button>)
+    })
+    while (results.length < 5) {
+      results.push(<button className='ui fluid disabled button'>EMPTY</button>)
+    }
+    return results
+  }
 
   render() {
-    const { meals } = this.state
+    const meals = this.mealArray(this.state.meals)
+
     return (
       <div className='ui center aligned grid'>
         <h1>{this.props.name}</h1>

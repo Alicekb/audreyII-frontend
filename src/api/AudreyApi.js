@@ -35,5 +35,16 @@ export default {
       method: 'get',
       headers: headers,
     }).then(parseRes)
+  },
+  getData(id, url, token) {
+    const headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer '+ token
+    }
+    return fetch(url + id, {
+      method: 'get',
+      headers: headers,
+    }).then(parseRes)
   }
 }
