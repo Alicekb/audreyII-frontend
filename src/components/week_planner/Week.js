@@ -19,11 +19,11 @@ class Week extends Component {
 
   chunkArray(array, chunk_size){
     let newArray = array.slice(0)
-    let results = [];
+    let results = []
     while (newArray.length) {
         results.push(newArray.splice(0, chunk_size));
     }
-    return results;
+    return results
   }
 
   render() {

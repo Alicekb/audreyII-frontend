@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import audreyApi from '../../api/AudreyApi';
+import shortid from 'shortid';
+
 import MealList from './MealList';
 import InfoCard from './InfoCard';
 import Search from './Search';
@@ -29,10 +31,23 @@ export default class MealPlanner extends Component {
     let newArray = meals.slice(0)
     let results = []
     newArray.map((meal) => {
-      return results.push(<button className='ui fluid button'>{meal.name}</button>)
+      return results.push(
+        <button 
+          className='ui fluid button'
+          key={shortid.generate()}
+        >
+          {meal.name}
+        </button>)
     })
     while (results.length < 5) {
-      results.push(<button className='ui fluid disabled button'>EMPTY</button>)
+      results.push(
+        <button 
+          className='ui fluid disabled button'
+          key={shortid.generate()}
+        >
+          EMPTY
+        </button>
+      )
     }
     return results
   }
