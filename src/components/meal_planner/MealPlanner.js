@@ -75,7 +75,7 @@ export default class MealPlanner extends Component {
     const { ingredients, calories, recipe } = this.state.inforCard
     const mealsArray = this.mealArray(this.state.meals)
     const ingredientsArray = ingredients.map((ingredient) => {
-        return <li key={shortid.generate()}> {ingredient} </li>
+        return <li className='column' key={shortid.generate()} style={{padding: 0}}> {ingredient} </li>
       })
 
     return (

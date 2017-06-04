@@ -26,6 +26,9 @@ ul {
     font-size: 3em;
     margin: 0;
   }
+  h3 {
+    margin: 0;
+  }
 }
 
 .ui.grid {
