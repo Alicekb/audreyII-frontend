@@ -18,7 +18,12 @@ export default class MealPlanner extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      meals: []
+      meals: [],
+      inforCard: {
+        ingredients: ['EMPTY'],
+        calories: 'EMPTY',
+        recipe: 'EMPTY' 
+      } 
     }
   }
 
@@ -34,7 +39,7 @@ export default class MealPlanner extends Component {
       })
   }
 
-  mealArray(meals) {
+  mealArray = (meals) => {
     let newArray = meals.slice(0)
     let results = []
     newArray.map((meal) => {
@@ -51,7 +56,11 @@ export default class MealPlanner extends Component {
   }
 
   render() {
-    const meals = this.mealArray(this.state.meals)
+    const { ingredients, calories, recipe } = this.state.inforCard
+    const mealsArray = this.mealArray(this.state.meals)
+    const ingredientsArray = ingredients.map((ingredient) => {
+        return <li>{ingredient}</li>
+      })
 
     return (
       <div className='ui center aligned grid'>
@@ -60,16 +69,20 @@ export default class MealPlanner extends Component {
           <div className='two column row'>
             <div className='ui column grid container'>
               <div className='row container' style={mealStyle}>
-                { meals }
+                { mealsArray }
               </div>
-              <InfoCard />
+              <InfoCard 
+                ingredients={ingredientsArray} 
+                calories={calories} 
+                recipe={recipe}
+              />
             </div>
             <div className='column'>
               <Search />
             </div>
           </div>
 
-          <div className='two column row'>
+          <div className='two column row' style={{paddingTop: 0}}>
             <div className='column'>
               <button className='ui fluid button'>Save</button>
             </div>
