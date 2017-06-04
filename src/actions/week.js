@@ -33,10 +33,8 @@ export const fetchWeek = (id, url, token) => {
     return audreyApi.getData(id, url, token)
       .then(res => {
         const { days, meals } = res
-        const ingredientArray = meals.map((meal) => { return meal.ingredients.split(', ')})
-        const newArray= ingredientArray.reduce((a, b) => { return a.concat(b)}, []);
-        const ingredients = [...new Set(newArray)]
-
+        const ingredientsArray = meals.map((meal) => { return meal.ingredients })
+        const ingredients = ingredientsArray.reduce((a, b) => { return a.concat(b)}, []);
         dispatch(weekSuccess(days, ingredients))
       })
       .catch(error => {

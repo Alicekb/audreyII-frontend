@@ -34,7 +34,6 @@ class Week extends Component {
         name={day.day_name}
       />
     })
-
     const ingredientsArray = this.chunkArray(this.props.ingredients, 5)
 
     return (
