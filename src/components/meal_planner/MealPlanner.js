@@ -3,9 +3,16 @@ import React, { Component } from 'react';
 import audreyApi from '../../api/AudreyApi';
 import shortid from 'shortid';
 
-import MealList from './MealList';
+import Meal from './Meal';
 import InfoCard from './InfoCard';
 import Search from './Search';
+
+const mealStyle = {
+  padding: '1em',
+  backgroundColor: '#fff',
+  height: '50%',
+  marginBottom: '.5em'
+}
 
 export default class MealPlanner extends Component {
   constructor(props, context) {
@@ -32,21 +39,12 @@ export default class MealPlanner extends Component {
     let results = []
     newArray.map((meal) => {
       return results.push(
-        <button 
-          className='ui fluid button'
-          key={shortid.generate()}
-        >
-          {meal.name}
-        </button>)
+        <Meal key={shortid.generate()} name={meal.name} disabled={false}/>
+      )
     })
     while (results.length < 5) {
       results.push(
-        <button 
-          className='ui fluid disabled button'
-          key={shortid.generate()}
-        >
-          EMPTY
-        </button>
+       <Meal key={shortid.generate()} name={'EMPTY'} disabled={true}/>
       )
     }
     return results
@@ -59,9 +57,11 @@ export default class MealPlanner extends Component {
       <div className='ui center aligned grid'>
         <h1>{this.props.name}</h1>
         <div className='ui grid container stackable'>
-          <div className='two column row' style={{paddingBottom: '0'}}>
+          <div className='two column row'>
             <div className='ui column grid container'>
-              <MealList meals={meals}/>
+              <div className='row container' style={mealStyle}>
+                { meals }
+              </div>
               <InfoCard />
             </div>
             <div className='column'>
@@ -69,7 +69,7 @@ export default class MealPlanner extends Component {
             </div>
           </div>
 
-          <div className='two column row' style={{paddingTop: '0'}}>
+          <div className='two column row'>
             <div className='column'>
               <button className='ui fluid button'>Save</button>
             </div>

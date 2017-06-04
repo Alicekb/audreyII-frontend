@@ -1,5 +1,4 @@
 import React from 'react';
-import Recipe from './Info_card/Recipe';
 
 const infoStyle = {
   backgroundColor: '#fff',
