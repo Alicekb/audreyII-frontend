@@ -39,12 +39,29 @@ export default class MealPlanner extends Component {
       })
   }
 
+  handleInfo = (meal) => {
+    const { ingredients, calories, recipe } = meal
+    const ingredientsArray = ingredients.split(', ')
+
+    this.setState({
+      inforCard: {
+        ingredients: ingredientsArray,
+        calories: calories,
+        recipe: recipe 
+      } 
+    })
+  }
+
   mealArray = (meals) => {
     let newArray = meals.slice(0)
     let results = []
     newArray.map((meal) => {
       return results.push(
-        <Meal key={shortid.generate()} name={meal.name} disabled={false}/>
+        <Meal 
+          key={shortid.generate()}
+          name={meal.name}
+          disabled={false}
+          handleClick={() => this.handleInfo(meal)}/>
       )
     })
     while (results.length < 5) {
@@ -59,7 +76,7 @@ export default class MealPlanner extends Component {
     const { ingredients, calories, recipe } = this.state.inforCard
     const mealsArray = this.mealArray(this.state.meals)
     const ingredientsArray = ingredients.map((ingredient) => {
-        return <li>{ingredient}</li>
+        return <li key={shortid.generate()}> {ingredient} </li>
       })
 
     return (

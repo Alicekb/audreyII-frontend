@@ -1,9 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const Meal = ({name, disabled}) => (
+const Meal = ({name, id, disabled, handleClick}) => (
   <button 
     className={ classNames('ui fluid button', {'disabled': disabled})}
+    onClick={handleClick}
   >
     {name}
   </button>
