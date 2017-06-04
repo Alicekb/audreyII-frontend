@@ -41,11 +41,10 @@ export default class MealPlanner extends Component {
 
   handleInfo = (meal) => {
     const { ingredients, calories, recipe } = meal
-    const ingredientsArray = ingredients.split(', ')
 
     this.setState({
       inforCard: {
-        ingredients: ingredientsArray,
+        ingredients: ingredients,
         calories: calories,
         recipe: recipe 
       } 
