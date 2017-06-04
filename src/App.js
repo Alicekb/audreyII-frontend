@@ -70,7 +70,7 @@ class App extends Component {
                 id={this.props.currentUser.current_calendar}/>)
               }
             />
-            <PrivateRoute path="/welcome" component={Welcome}/>
+            <PrivateRoute path="/welcome" component={() => (<Welcome name={this.props.currentUser.username}/>)}/>
             <PrivateRoute component={NoMatch}/>
           </Switch>
         </div>

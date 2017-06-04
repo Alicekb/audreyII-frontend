@@ -12,10 +12,10 @@ const boxContainer = {
   background: '#fff'
 }
 
-const Main = () => (
+const Main = ({ name }) => (
   <div>
     <div className='ui center aligned grid container ' style={boxContainer}>
-      <h1 className='row'>Welcome to Audrey II</h1>
+      <h1 className='row'>Welcome, {name}!</h1>
       <div className='divided two column row stackable'>
         <div className='column' style={boxStyle}>
           <p>Gamification leverage agile development low hanging fruit learning curve hypotheses.
