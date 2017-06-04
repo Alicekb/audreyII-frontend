@@ -1,7 +1,6 @@
 const initState = {
   requestingWeek: false,
   daysArray: [],
-  meals: [],
   ingredients: [],
   errors: {}
 }
@@ -19,7 +18,6 @@ export default (state = initState, action) => {
         ...state,
         requestingWeek: false,
         daysArray: action.days,
-        meals: action.meals,
         ingredients: action.ingredients
       }
 

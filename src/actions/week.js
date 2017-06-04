@@ -6,11 +6,10 @@ const weekRequest = () => {
   }
 }
 
-const weekSuccess = (days, meals, ingredients) => {
+const weekSuccess = (days, ingredients) => {
   return {
     type: 'WEEK_SUCCESS',
     days: days,
-    meals: meals,
     ingredients: ingredients
   }
 }
@@ -37,7 +36,8 @@ export const fetchWeek = (id, url, token) => {
         const ingredientArray = meals.map((meal) => { return meal.ingredients.split(', ')})
         const newArray= ingredientArray.reduce((a, b) => { return a.concat(b)}, []);
         const ingredients = [...new Set(newArray)]
-        dispatch(weekSuccess(days, meals, ingredients))
+
+        dispatch(weekSuccess(days, ingredients))
       })
       .catch(error => {
         dispatch(weekFailure(error))
