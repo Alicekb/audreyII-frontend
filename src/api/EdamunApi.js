@@ -16,6 +16,13 @@ export default {
     {
       method: 'get',
     }).then(parseRes)
+  },
+  searchMeal(uri) {
+    const id = uri.replace(/#/i, '%23')
+    return fetch(`https://api.edamam.com/search?r=${id}&app_key=20febab47902d47feb3f2421d8af6d4c`,
+    {
+      method: 'get',
+    }).then(parseRes)
   }
 }
 

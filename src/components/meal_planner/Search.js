@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
+import shortid from 'shortid'
 import edamunApi from '../../api/EdamunApi'
 
 import ReactScrollbar from 'react-scrollbar-js';
 
 import Meal from './Meal';
 
-const infoStyle = {
-  backgroundColor: 'white',
-  height: '93.5%',
-  padding: '1em',
-}
-
 export default class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
       search: '',
-      searchResults: []
+      searchResults: [],
     }
   }
 
@@ -41,11 +36,25 @@ export default class Search extends Component {
         })
       })
   }
+
+  handleClick(uri) {
+    edamunApi.searchMeal(uri)
+      .then(res => {
+        const { ingredients, url, calories} = res[0]
+        const ingredientsArray = ingredients.map((ingredient) => { return ingredient.food })
+        const meal = {
+          ingredients: ingredientsArray,
+          calories: calories,
+          recipe: url
+        }
+        this.props.handleInfo(meal)
+      })
+  }
   
   render() {
     const { searchResults } = this.state
     const meals = searchResults.map((meal) => {
-      return <Meal name={meal.name} />
+      return <Meal key={shortid.generate()} name={meal.name} handleClick={() => this.handleClick(meal.uri)}/>
     })
     return (
       <div>
@@ -53,14 +62,11 @@ export default class Search extends Component {
           <input type="text" placeholder="Search..." onChange={(ev) => this.onChange(ev)}/>
           <button className='ui button' onClick={(ev) => this.onSubmit(ev)}>Search</button>
         </div>
-        <ReactScrollbar style={{width: '100%', height: 500, backgroundColor: '#fff'}}>
+        <ReactScrollbar style={{width: '100%', height: 500, backgroundColor: '#fff', padding: '5px'}}>
           <div className='should-have-a-children scroll-me'>
             {meals}
           </div>
         </ReactScrollbar>
-        {/*<div className='ui column' style={infoStyle}>
-          {meals}
-        </div>*/}
       </div>
     );
   }

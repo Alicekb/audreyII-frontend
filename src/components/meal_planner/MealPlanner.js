@@ -19,7 +19,7 @@ export default class MealPlanner extends Component {
     super(props, context);
     this.state = {
       meals: [],
-      inforCard: {
+      infoCard: {
         ingredients: ['EMPTY'],
         calories: 'EMPTY',
         recipe: 'EMPTY' 
@@ -41,13 +41,13 @@ export default class MealPlanner extends Component {
 
   handleInfo = (meal) => {
     const { ingredients, calories, recipe } = meal
-
+    debugger
     this.setState({
-      inforCard: {
+      infoCard: {
         ingredients: ingredients,
         calories: calories,
         recipe: recipe 
-      } 
+      }  
     })
   }
 
@@ -72,7 +72,7 @@ export default class MealPlanner extends Component {
   }
 
   render() {
-    const { ingredients, calories, recipe } = this.state.inforCard
+    const { ingredients, calories, recipe } = this.state.infoCard
     const mealsArray = this.mealArray(this.state.meals)
     const ingredientsArray = ingredients.map((ingredient) => {
         return <li className='column' key={shortid.generate()} style={{padding: 0}}> {ingredient} </li>
@@ -94,7 +94,7 @@ export default class MealPlanner extends Component {
               />
             </div>
             <div className='column'>
-              <Search />
+              <Search handleInfo={(meal) => this.handleInfo(meal)}/>
             </div>
           </div>
 
