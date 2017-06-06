@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import edamunApi from '../../api/EdamunApi'
 
+import ReactScrollbar from 'react-scrollbar-js';
+
 import Meal from './Meal';
 
 const infoStyle = {
@@ -51,9 +53,14 @@ export default class Search extends Component {
           <input type="text" placeholder="Search..." onChange={(ev) => this.onChange(ev)}/>
           <button className='ui button' onClick={(ev) => this.onSubmit(ev)}>Search</button>
         </div>
-        <div className='ui column' style={infoStyle}>
+        <ReactScrollbar style={{width: '100%', height: 500, backgroundColor: '#fff'}}>
+          <div className='should-have-a-children scroll-me'>
+            {meals}
+          </div>
+        </ReactScrollbar>
+        {/*<div className='ui column' style={infoStyle}>
           {meals}
-        </div>
+        </div>*/}
       </div>
     );
   }
