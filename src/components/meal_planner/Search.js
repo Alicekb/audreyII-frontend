@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import edamunApi from '../../api/EdamunApi'
 
 import Meal from './Meal';
 
@@ -12,7 +13,8 @@ export default class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: ''
+      search: '',
+      searchResults: []
     }
   }
 
@@ -21,13 +23,29 @@ export default class Search extends Component {
       search: ev.target.value
     })
   }
+
+  onSubmit(ev) {
+    ev.preventDefault()
+    return edamunApi.searchRecipes(this.state.search)
+      .then(res => {
+        const results = res.hits.map((meal) => {
+          return {
+            uri: meal.recipe.uri,
+            name: meal.recipe.label
+          }
+        })
+        this.setState({
+          searchResults: results
+        })
+      })
+  }
   
   render() {
     return (
       <div>
         <div className="ui fluid input">
           <input type="text" placeholder="Search..." onChange={(ev) => this.onChange(ev)}/>
-          <button className='ui button'>Search</button>
+          <button className='ui button' onClick={(ev) => this.onSubmit(ev)}>Search</button>
         </div>
         <div className='ui column' style={infoStyle}>
           <Meal name={'Sunday Supper: Jerk Half-Chickens'}/>
