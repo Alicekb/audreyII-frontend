@@ -40,14 +40,7 @@ export default class Search extends Component {
   handleClick(uri) {
     edamunApi.searchMeal(uri)
       .then(res => {
-        const { ingredients, url, calories} = res[0]
-        const ingredientsArray = ingredients.map((ingredient) => { return ingredient.food })
-        const meal = {
-          ingredients: ingredientsArray,
-          calories: calories,
-          recipe: url
-        }
-        this.props.handleInfo(meal)
+        this.props.handleInfo(res)
       })
   }
   
