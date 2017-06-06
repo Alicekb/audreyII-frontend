@@ -9,11 +9,24 @@ const infoStyle = {
 }
 
 export default class Search extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: ''
+    }
+  }
+
+  onChange(ev) {
+    this.setState({
+      search: ev.target.value
+    })
+  }
+  
   render() {
     return (
       <div>
         <div className="ui fluid input">
-          <input type="text" placeholder="Search..." />
+          <input type="text" placeholder="Search..." onChange={(ev) => this.onChange(ev)}/>
           <button className='ui button'>Search</button>
         </div>
         <div className='ui column' style={infoStyle}>
