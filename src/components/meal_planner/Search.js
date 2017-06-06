@@ -30,8 +30,8 @@ export default class Search extends Component {
       .then(res => {
         const results = res.hits.map((meal) => {
           return {
-            uri: meal.recipe.uri,
-            name: meal.recipe.label
+            name: meal.recipe.label,
+            uri: meal.recipe.uri
           }
         })
         this.setState({
@@ -41,6 +41,10 @@ export default class Search extends Component {
   }
   
   render() {
+    const { searchResults } = this.state
+    const meals = searchResults.map((meal) => {
+      return <Meal name={meal.name} />
+    })
     return (
       <div>
         <div className="ui fluid input">
@@ -48,20 +52,7 @@ export default class Search extends Component {
           <button className='ui button' onClick={(ev) => this.onSubmit(ev)}>Search</button>
         </div>
         <div className='ui column' style={infoStyle}>
-          <Meal name={'Sunday Supper: Jerk Half-Chickens'}/>
-          <Meal name={'Roasted Chickens With Lemon And Orange'}/>
-          <Meal name={'Sage Pesto Roasted Chicken'}/>
-          <Meal name={'Classic Roast Chicken Recipe'}/>
-          <Meal name={'Chicken Broth Elixir'}/>
-          <Meal name={'Mustard-Crusted Roast Chickens'}/>
-          <Meal name={'Sunday Supper: Jerk Half-Chickens'}/>
-          <Meal name={'Roasted Chickens With Lemon And Orange'}/>
-          <Meal name={'Sage Pesto Roasted Chicken'}/>
-          <Meal name={'Classic Roast Chicken Recipe'}/>
-          <Meal name={'Chicken Broth Elixir'}/>
-          <Meal name={'Mustard-Crusted Roast Chickens'}/>
-          <Meal name={'Sunday Supper: Jerk Half-Chickens'}/>
-          <Meal name={'Classic Roast Chicken Recipe'}/>
+          {meals}
         </div>
       </div>
     );
