@@ -22,7 +22,7 @@ class Home extends Component {
     }
   }
 
-  onClick(e) {
+  onClick = (e) => {
     e.preventDefault()
     let showForm = !this.state.loginForm
 
@@ -71,7 +71,7 @@ class Home extends Component {
                   type='button' 
                   className='ui button' 
                   style={{background: 'none'}}
-                  onClick={ this.onClick.bind(this) }
+                  onClick={ this.onClick}
                 >
                   Signup instead
                 </button>
@@ -83,7 +83,7 @@ class Home extends Component {
                   type='button' 
                   className='ui button'
                   style={{background: 'none'}} 
-                  onClick={ this.onClick.bind(this) }
+                  onClick={ this.onClick }
                 >
                   Login instead
                 </button>

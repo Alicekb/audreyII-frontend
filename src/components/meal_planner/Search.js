@@ -15,13 +15,13 @@ export default class Search extends Component {
     }
   }
 
-  onChange(ev) {
+  onChange = (ev) => {
     this.setState({
       search: ev.target.value
     })
   }
 
-  onSubmit(ev) {
+  onSubmit = (ev) => {
     ev.preventDefault()
     return edamunApi.searchRecipes(this.state.search)
       .then(res => {
@@ -37,7 +37,7 @@ export default class Search extends Component {
       })
   }
 
-  handleClick(uri) {
+  handleClick = (uri) => {
     edamunApi.searchMeal(uri)
       .then(res => {
         this.props.handleInfo(res)
@@ -52,8 +52,8 @@ export default class Search extends Component {
     return (
       <div>
         <div className="ui fluid input">
-          <input type="text" placeholder="Search..." onChange={(ev) => this.onChange(ev)}/>
-          <button className='ui button' onClick={(ev) => this.onSubmit(ev)}>Search</button>
+          <input type="text" placeholder="Search..." onChange={this.onChange}/>
+          <button className='ui button' onClick={this.onSubmit}>Search</button>
         </div>
         <ReactScrollbar style={{width: '100%', height: 500, backgroundColor: '#fff', padding: '5px'}}>
           <div className='should-have-a-children scroll-me'>

@@ -25,6 +25,11 @@ ul {
   h1 {
     font-size: 3em;
     margin: 0;
+      text-shadow:
+   -1px -1px 0 #fff,  
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+     1px 1px 0 #fff;
   }
   h3 {
     margin: 0;
