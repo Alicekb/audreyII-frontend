@@ -12,6 +12,10 @@ const mealSource = {
       id: props.id,
       disabled: props.disabled
     }
+  },
+  endDrag(props, monitor) {
+    const item = monitor.getItem()
+    console.log(item)
   }
 }
 
@@ -30,11 +34,12 @@ const propTypes = {
 
 class Meal extends Component {
   render() {
-    const {name, id, disabled, handleClick, isDragging, connectDragSource } = this.props;
+    const {name, disabled, handleClick, connectDragSource } = this.props;
     return connectDragSource(
       <button 
         className={ classNames('ui fluid button', {'disabled': disabled})}
         onClick={handleClick}
+        style={{border: '1px solid black'}}
       >
         {name}
       </button>
