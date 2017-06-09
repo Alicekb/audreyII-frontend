@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import audreyApi from '../../api/AudreyApi';
 import shortid from 'shortid';
-
+import { mealType } from '../Types';
 import Meal from './Meal';
 import InfoCard from './InfoCard';
 import Search from './Search';
