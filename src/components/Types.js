@@ -1,3 +1,3 @@
-export const mealType = {
+export const ItemTypes = {
   MEAL: 'meal'
 }
