@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { DropTarget } from 'react-dnd';
+import PropTypes from 'prop-types';
 
 import audreyApi from '../../api/AudreyApi';
 import shortid from 'shortid';
-import { mealType } from '../Types';
+import { ItemTypes } from '../Types';
+
 import Meal from './Meal';
 import InfoCard from './InfoCard';
 import Search from './Search';
@@ -14,7 +17,25 @@ const mealStyle = {
   marginBottom: '.5em'
 }
 
-export default class MealPlanner extends Component {
+const mealListTarget = {
+  drop(props, monitor, Component) {
+    const item = monitor.getItem()
+    console.log(item)
+  }
+}
+
+function collect(connect, monitor) {
+  return {
+    connectDropTarget: connect.dropTarget(),
+    itemType: monitor.getItemType()
+  }
+}
+
+const propTypes = {
+  connectDropTarget: PropTypes.func.isRequired
+};
+
+class MealPlanner extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -72,13 +93,14 @@ export default class MealPlanner extends Component {
   }
 
   render() {
+    const { connectDropTarget } = this.props;
     const { ingredients, calories, recipe } = this.state.infoCard
     const mealsArray = this.mealArray(this.state.meals)
     const ingredientsArray = ingredients.map((ingredient) => {
         return <li className='column' key={shortid.generate()} style={{padding: 0}}> {ingredient} </li>
       })
 
-    return (
+    return connectDropTarget(
       <div className='ui center aligned grid'>
         <h1>{this.props.name}</h1>
         <div className='ui grid container stackable'>
@@ -111,3 +133,7 @@ export default class MealPlanner extends Component {
     );
   }
 }
+
+MealPlanner.propTypes = propTypes
+
+export default DropTarget(ItemTypes.MEAL, mealListTarget, collect)(MealPlanner);
