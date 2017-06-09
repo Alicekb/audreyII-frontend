@@ -25,13 +25,6 @@ const propTypes = {
 };
 
 class MealList extends Component {
-  constructor(props, context) {
-    super(props);
-    this.state = {
-      meals: [] || this.props.meals
-    }
-  }
-
   mealArray = (meals) => {
     let newArray = meals.slice(0)
     let results = []
@@ -53,8 +46,8 @@ class MealList extends Component {
     }
 
   render(){
-    const { connectDropTarget } = this.props
-    const mealsArray = this.mealArray(this.state.meals)
+    const { meals, connectDropTarget } = this.props
+    const mealsArray = this.mealArray(meals)
     return connectDropTarget(
       <div className='row container' style={mealStyle}>
         {mealsArray}

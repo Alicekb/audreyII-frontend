@@ -11,6 +11,7 @@ export default class MealPlanner extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
+      meals: [],
       infoCard: {
         ingredients: ['EMPTY'],
         calories: 'EMPTY',
@@ -32,7 +33,7 @@ export default class MealPlanner extends Component {
   }
 
   handleInfo = (meal) => {
-    const { ingredients, calories, recipe } = meal    
+    const { ingredients, calories, recipe } = meal
     this.setState({
       infoCard: {
         ingredients: ingredients,
@@ -44,17 +45,17 @@ export default class MealPlanner extends Component {
 
   render() {
     const { ingredients, calories, recipe } = this.state.infoCard
+    const { meals } = this.state
     const ingredientsArray = ingredients.map((ingredient) => {
         return <li className='column' key={shortid.generate()} style={{padding: 0}}> {ingredient} </li>
       })
-
     return (
       <div className='ui center aligned grid'>
         <h1>{this.props.name}</h1>
         <div className='ui grid container stackable'>
           <div className='two column row'>
             <div className='ui column grid container'>
-              <MealList meals={this.state.meals} />
+              <MealList meals={meals} />
               <InfoCard 
                 ingredients={ingredientsArray} 
                 calories={calories} 
