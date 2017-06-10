@@ -6,6 +6,7 @@ import shortid from 'shortid';
 import MealList from './MealList';
 import InfoCard from './InfoCard';
 import Search from './Search';
+import Meal from './Meal';
 
 export default class MealPlanner extends Component {
   constructor(props, context) {
@@ -43,9 +44,30 @@ export default class MealPlanner extends Component {
     })
   }
 
+  mealArray = (meals) => {
+    let newArray = meals.slice(0)
+    let results = []
+    newArray.map((meal) => {
+      return results.push(
+        <Meal 
+          key={shortid.generate()}
+          name={meal.name}
+          disabled={true}
+          handleClick={() => this.handleInfo(meal)}/>
+      )
+    })
+
+    while (results.length < 5) {
+      results.push(
+        <button className='ui fluid button disabled' key={shortid.generate()}> EMPTY </button>
+      )
+    }
+    return results
+  }
+
   render() {
     const { ingredients, calories, recipe } = this.state.infoCard
-    const { meals } = this.state
+    const mealsArray = this.mealArray(this.state.meals)
     const ingredientsArray = ingredients.map((ingredient) => {
         return <li className='column' key={shortid.generate()} style={{padding: 0}}> {ingredient} </li>
       })
@@ -55,7 +77,7 @@ export default class MealPlanner extends Component {
         <div className='ui grid container stackable'>
           <div className='two column row'>
             <div className='ui column grid container'>
-              <MealList meals={meals} />
+              <MealList meals={mealsArray} />
               <InfoCard 
                 ingredients={ingredientsArray} 
                 calories={calories} 

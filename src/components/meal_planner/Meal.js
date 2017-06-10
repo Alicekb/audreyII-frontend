@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 import PropTypes from 'prop-types';
 
-import classNames from 'classnames';
 import { ItemTypes } from '../Types';
 
 const mealSource = {
@@ -11,6 +10,13 @@ const mealSource = {
       name: props.name,
       id: props.id,
       disabled: props.disabled
+    }
+  },
+  canDrag(props, monitor) {
+    if (props.disabled === true) {
+      return false
+    } else {
+      return true
     }
   },
   endDrag(props, monitor) {
@@ -34,10 +40,10 @@ const propTypes = {
 
 class Meal extends Component {
   render() {
-    const {name, disabled, handleClick, connectDragSource } = this.props;
+    const {name, handleClick, connectDragSource } = this.props;
     return connectDragSource(
       <button 
-        className={ classNames('ui fluid button', {'disabled': disabled})}
+        className='ui fluid button'
         onClick={handleClick}
         style={{border: '1px solid black'}}
       >
