@@ -43,11 +43,11 @@ export default class Search extends Component {
         this.props.handleInfo(res)
       })
   }
-  
+
   render() {
     const { searchResults } = this.state
     const meals = searchResults.map((meal) => {
-      return <Meal key={shortid.generate()} name={meal.name} handleClick={() => this.handleClick(meal.uri)}/>
+      return <Meal key={shortid.generate()} name={meal.name} disabled={false} handleClick={() => this.handleClick(meal.uri)}/>
     })
     return (
       <div>
