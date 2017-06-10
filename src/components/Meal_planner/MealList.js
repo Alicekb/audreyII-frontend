@@ -6,8 +6,21 @@ import PropTypes from 'prop-types';
 const mealStyle = {
   padding: '1em',
   backgroundColor: '#fff',
-  height: '50%',
+  height: '40%',
   marginBottom: '.5em'
+}
+
+const mealTarget = {
+  canDrop(props, monitor) {
+    const arrayLength = props.mealsLength
+    if (arrayLength < 5) {
+      return true
+    }
+  },
+  drop(props, monitor, Component) {
+    const item = monitor.getItem()
+    props.handleUpdate(item)
+  }
 }
 
 function collect(connect, monitor) {
@@ -25,7 +38,7 @@ class MealList extends Component {
   render(){
     const { meals, connectDropTarget } = this.props
     return connectDropTarget(
-      <div className='row container' style={mealStyle}>
+      <div className='container' style={mealStyle}>
         {meals}
       </div>
     )
@@ -34,4 +47,4 @@ class MealList extends Component {
 
 MealList.propTypes = propTypes
 
-export default DropTarget(ItemTypes.MEAL, {}, collect)(MealList)
+export default DropTarget(ItemTypes.MEAL, mealTarget, collect)(MealList)

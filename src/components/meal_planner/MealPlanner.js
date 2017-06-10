@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import audreyApi from '../../api/AudreyApi';
+import edamunApi from '../../api/EdamunApi';
 import shortid from 'shortid';
 
 import MealList from './MealList';
@@ -44,8 +45,29 @@ export default class MealPlanner extends Component {
     })
   }
 
-  mealArray = (meals) => {
-    let newArray = meals.slice(0)
+  updateMealList= (newMeal) => {
+    edamunApi.searchMeal(newMeal.uri)
+      .then(res => {
+        const meal = {
+          calories: res.calories,
+          ingredients: res.ingredients,
+          id: undefined,
+          name: newMeal.name,
+          recipe: res.recipe
+        }
+        const newMeals = this.mealArray(meal)
+        this.setState({
+          meals: newMeals
+        })
+    })
+  }
+
+  mealArray = (meal) => {
+    let newArray = this.state.meals.slice()
+    if (meal) {
+        newArray.push(meal)
+        return newArray
+    }
     let results = []
     newArray.map((meal) => {
       return results.push(
@@ -56,18 +78,12 @@ export default class MealPlanner extends Component {
           handleClick={() => this.handleInfo(meal)}/>
       )
     })
-
-    while (results.length < 5) {
-      results.push(
-        <button className='ui fluid button disabled' key={shortid.generate()}> EMPTY </button>
-      )
-    }
     return results
   }
 
   render() {
     const { ingredients, calories, recipe } = this.state.infoCard
-    const mealsArray = this.mealArray(this.state.meals)
+    const mealsArray = this.mealArray()
     const ingredientsArray = ingredients.map((ingredient) => {
         return <li className='column' key={shortid.generate()} style={{padding: 0}}> {ingredient} </li>
       })
@@ -77,7 +93,7 @@ export default class MealPlanner extends Component {
         <div className='ui grid container stackable'>
           <div className='two column row'>
             <div className='ui column grid container'>
-              <MealList meals={mealsArray} />
+              <MealList meals={mealsArray} mealsLength={mealsArray.length} handleUpdate={this.updateMealList}/>
               <InfoCard 
                 ingredients={ingredientsArray} 
                 calories={calories} 

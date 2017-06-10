@@ -9,6 +9,7 @@ const mealSource = {
     return {
       name: props.name,
       id: props.id,
+      uri: props.uri,
       disabled: props.disabled
     }
   },
@@ -18,10 +19,6 @@ const mealSource = {
     } else {
       return true
     }
-  },
-  endDrag(props, monitor) {
-    const item = monitor.getItem()
-    console.log(item)
   }
 }
 
@@ -43,7 +40,7 @@ class Meal extends Component {
     const {name, handleClick, connectDragSource } = this.props;
     return connectDragSource(
       <button 
-        className='ui fluid button'
+        className='ui fluid container button'
         onClick={handleClick}
         style={{border: '1px solid black'}}
       >
