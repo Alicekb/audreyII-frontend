@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 
 import audreyApi from '../../api/AudreyApi';
 import edamunApi from '../../api/EdamunApi';
@@ -9,7 +10,7 @@ import InfoCard from './InfoCard';
 import Search from './Search';
 import Meal from './Meal';
 
-export default class MealPlanner extends Component {
+class MealPlanner extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -110,7 +111,7 @@ export default class MealPlanner extends Component {
               <button className='ui fluid button'>Save</button>
             </div>
             <div className='column'>
-              <button className='ui fluid button'>Cancel</button>
+              <button className='ui fluid button' onClick={this.props.history.goBack}>Cancel</button>
             </div>
           </div>
         </div>
@@ -118,3 +119,5 @@ export default class MealPlanner extends Component {
     );
   }
 }
+
+export default withRouter(MealPlanner)
