@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
+
 import { connect } from 'react-redux';
 import { fetchWeek, resetWeek } from '../../actions/week';
 import shortid from 'shortid';

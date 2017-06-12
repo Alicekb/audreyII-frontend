@@ -16,6 +16,7 @@ class MealPlanner extends Component {
     this.state = {
       meals: [],
       infoCard: {
+        removable: false,
         ingredients: ['EMPTY'],
         calories: 'EMPTY',
         recipe: 'EMPTY' 
@@ -39,10 +40,11 @@ class MealPlanner extends Component {
     const { ingredients, calories, recipe } = meal
     this.setState({
       infoCard: {
+        removable: true,
         ingredients: ingredients,
         calories: calories,
-        recipe: recipe 
-      }  
+        recipe: recipe
+      }
     })
   }
 
@@ -66,8 +68,13 @@ class MealPlanner extends Component {
   mealArray = (meal) => {
     let newArray = this.state.meals.slice()
     if (meal) {
+      const unique = newArray.every((object) => { return object.name !== meal.name })
+      if (unique === true) {
         newArray.push(meal)
         return newArray
+      } else {
+        return newArray
+      }
     }
     let results = []
     newArray.map((meal) => {
@@ -83,7 +90,7 @@ class MealPlanner extends Component {
   }
 
   render() {
-    const { ingredients, calories, recipe } = this.state.infoCard
+    const { ingredients, calories, recipe, removable } = this.state.infoCard
     const mealsArray = this.mealArray()
     const ingredientsArray = ingredients.map((ingredient) => {
         return <li className='column' key={shortid.generate()} style={{padding: 0}}> {ingredient} </li>
@@ -94,8 +101,13 @@ class MealPlanner extends Component {
         <div className='ui grid container stackable'>
           <div className='two column row'>
             <div className='ui column grid container'>
-              <MealList meals={mealsArray} mealsLength={mealsArray.length} handleUpdate={this.updateMealList}/>
-              <InfoCard 
+              <MealList 
+                meals={mealsArray} 
+                mealsLength={mealsArray.length}
+                handleUpdate={this.updateMealList}
+              />
+              <InfoCard
+                removable={removable}
                 ingredients={ingredientsArray} 
                 calories={calories} 
                 recipe={recipe}

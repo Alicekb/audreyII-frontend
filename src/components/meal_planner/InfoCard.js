@@ -5,9 +5,10 @@ const infoStyle = {
   paddingLeft: '.7em'
 }
 
-const InfoCard = ({ingredients, calories, recipe}) => (
+const InfoCard = ({ ingredients, calories, recipe, removable }) => (
   <div className='row' style={infoStyle}>
     <div className='container'>
+      { removable ? <button style={{float: 'right', marginRight: '5px'}}>Delete</button> : (null)}
       <h3>Ingredients List:</h3>
         <ul className='ui list three column grid'>
           {ingredients}
