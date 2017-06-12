@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchWeek, resetWeek } from '../../actions/week';
@@ -50,7 +51,7 @@ class Week extends Component {
 
             <div className='two column row' style={{paddingTop: '0'}}>
               <div className='column'>
-                <Link to='/calendar'><button className='ui fluid button'>Back</button></Link>
+                <button className='ui fluid button' onClick={this.props.history.goBack}>Back</button>
               </div>
 
               <div className='column'>
@@ -73,4 +74,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { fetchWeek, resetWeek })(Week);
+export default withRouter(connect(mapStateToProps, { fetchWeek, resetWeek })(Week));
