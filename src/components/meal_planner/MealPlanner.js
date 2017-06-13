@@ -36,11 +36,11 @@ class MealPlanner extends Component {
       })
   }
 
-  handleInfo = (meal) => {
+  handleInfo = (meal, remove) => {
     const { ingredients, calories, recipe } = meal
     this.setState({
       infoCard: {
-        removable: true,
+        removable: remove,
         ingredients: ingredients,
         calories: calories,
         recipe: recipe
@@ -83,7 +83,7 @@ class MealPlanner extends Component {
           key={shortid.generate()}
           name={meal.name}
           disabled={true}
-          handleClick={() => this.handleInfo(meal)}/>
+          handleClick={() => this.handleInfo(meal, true)}/>
       )
     })
     return results
