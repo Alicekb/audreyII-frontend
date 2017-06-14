@@ -22,18 +22,37 @@ export default {
       headers: headers,
     }).then(parseRes)
   },
-  updateDay(id, meals, token) {
+  addMeals(id, meal, token) {
     const headers = {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin':'*',
       'Authorization': 'Bearer '+ token
     }
-    const body = JSON.stringify(meals)
-    return fetch(`http://localhost:3001/v1/days/${id}`, {
-      method: 'put',
+    const { name, recipe, calories, ingredients } = meal
+    const body = JSON.stringify({ meal: {
+        name: name,
+        recipe: recipe,
+        calories: calories,
+        day_id: id,
+        ingredients: ingredients
+      } 
+    })
+
+    return fetch(`http://localhost:3001/v1/meals`, {
+      method: 'post',
       headers: headers,
       body: body
+    }).then(parseRes)
+  },
+  deleteMeals(id, token) {
+    const headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer '+ token
+    }
+    return fetch(`http://localhost:3001/v1/meals/${id}`, {
+      method: 'delete',
+      headers: headers,
     }).then(parseRes)
   }
 }

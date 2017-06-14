@@ -15,6 +15,7 @@ class MealPlanner extends Component {
     super(props, context);
     this.state = {
       meals: [],
+      deleted: [],
       infoCard: {
         name: '',
         removable: false,
@@ -52,11 +53,19 @@ class MealPlanner extends Component {
 
   handleDelete = (name) => {
     let newArray = this.state.meals.slice()
-    let results = newArray.filter((meal) => {
+    let deleted = this.state.deleted.slice()
+
+    const results = newArray.filter((meal) => {
       return meal.name !== name
     })
+    const deletedResult = newArray.filter((meal) => {
+      return meal.name === name
+    })
+    deleted.push(deletedResult[0])
+
     this.setState({
       meals: results,
+      deleted: deleted,
       infoCard: {
         name: '',
         removable: false,
@@ -67,12 +76,23 @@ class MealPlanner extends Component {
     })
   }
 
-  handleSave = (id, meals) => {
-    let newArray = meals.slice();
-    audreyApi.updateDay(id, newArray, localStorage.getItem('token'))
-      .then(res => {
-          debugger
-      })
+  handleSave = (id, state) => {
+    let newArray = state.meals.slice()
+    let deleted = state.deleted.slice()
+
+    newArray.forEach((meal) => {
+      if (!meal.id) {
+        audreyApi.addMeals(id, meal, localStorage.getItem('token'))
+      }
+    })
+
+    deleted.forEach((meal) => {
+      if (!!meal.id) {
+        audreyApi.deleteMeals(meal.id, localStorage.getItem('token'))
+      }
+    })
+
+    this.props.history.goBack()
   }
 
   updateMealList= (newMeal) => {
@@ -150,7 +170,7 @@ class MealPlanner extends Component {
 
           <div className='two column row' style={{paddingTop: 0}}>
             <div className='column'>
-              <button onClick={() => this.handleSave(this.props.id, this.state.meals)} className='ui fluid button'>Save</button>
+              <button onClick={() => this.handleSave(this.props.id, this.state)} className='ui fluid button'>Save</button>
             </div>
             <div className='column'>
               <button className='ui fluid button' onClick={this.props.history.goBack}>Cancel</button>
