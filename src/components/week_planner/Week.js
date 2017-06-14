@@ -55,7 +55,7 @@ class Week extends Component {
               </div>
 
               <div className='column'>
-                <button className='ui fluid button'>Print</button>
+                <button className='ui fluid button' onClick={() => window.print()}>Print Page</button>
               </div>
             </div>
           </div>
