@@ -16,10 +16,11 @@ class MealPlanner extends Component {
     this.state = {
       meals: [],
       infoCard: {
+        name: '',
         removable: false,
         ingredients: ['EMPTY'],
         calories: 'EMPTY',
-        recipe: 'EMPTY' 
+        recipe: '' 
       } 
     }
   }
@@ -37,14 +38,32 @@ class MealPlanner extends Component {
   }
 
   handleInfo = (meal, remove) => {
-    const { ingredients, calories, recipe } = meal
+    const { name, ingredients, calories, recipe } = meal
     this.setState({
       infoCard: {
+        name: name,
         removable: remove,
         ingredients: ingredients,
         calories: calories,
         recipe: recipe
       }
+    })
+  }
+
+  handleDelete = (name) => {
+    let newArray = this.state.meals.slice()
+    let results = newArray.filter((meal) => {
+      return meal.name !== name
+    })
+    this.setState({
+      meals: results,
+      infoCard: {
+        name: '',
+        removable: false,
+        ingredients: ['EMPTY'],
+        calories: 'EMPTY',
+        recipe: '' 
+      } 
     })
   }
 
@@ -83,14 +102,15 @@ class MealPlanner extends Component {
           key={shortid.generate()}
           name={meal.name}
           disabled={true}
-          handleClick={() => this.handleInfo(meal, true)}/>
+          handleClick={() => this.handleInfo(meal, true)}
+        />
       )
     })
     return results
   }
 
   render() {
-    const { ingredients, calories, recipe, removable } = this.state.infoCard
+    const { name, ingredients, calories, recipe, removable } = this.state.infoCard
     const mealsArray = this.mealArray()
     const ingredientsArray = ingredients.map((ingredient) => {
         return <li className='column' key={shortid.generate()} style={{padding: 0}}> {ingredient} </li>
@@ -107,6 +127,8 @@ class MealPlanner extends Component {
                 handleUpdate={this.updateMealList}
               />
               <InfoCard
+                handleDelete={this.handleDelete}
+                name={name}
                 removable={removable}
                 ingredients={ingredientsArray} 
                 calories={calories} 

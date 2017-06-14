@@ -5,10 +5,16 @@ const infoStyle = {
   paddingLeft: '.7em'
 }
 
-const InfoCard = ({ ingredients, calories, recipe, removable }) => (
+const InfoCard = ({ name, ingredients, calories, recipe, removable, handleDelete }) => (
   <div className='row' style={infoStyle}>
     <div className='container'>
-      { removable ? <button style={{float: 'right', marginRight: '5px'}}>Delete</button> : (null)}
+      { removable ? 
+        <button 
+          onClick={() => handleDelete(name)}
+          style={{float: 'right', marginRight: '5px'}}>Delete
+        </button> 
+        : (null)
+      }
       <h3>Ingredients List:</h3>
         <ul className='ui list three column grid'>
           {ingredients}
@@ -18,9 +24,11 @@ const InfoCard = ({ ingredients, calories, recipe, removable }) => (
           <li>{calories}</li>
         </ul>
       <h3>Recipe URL:</h3>
-        <a href={recipe} target='_blank' rel="noopener noreferrer">
-          {recipe}
-        </a>
+        { recipe !== '' ?
+          <a href={recipe} target='_blank' rel="noopener noreferrer">
+            {recipe}
+          </a> : (null)
+        }
     </div>
   </div>
 )
