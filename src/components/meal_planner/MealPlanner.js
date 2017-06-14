@@ -67,6 +67,14 @@ class MealPlanner extends Component {
     })
   }
 
+  handleSave = (id, meals) => {
+    let newArray = meals.slice();
+    audreyApi.updateDay(id, newArray, localStorage.getItem('token'))
+      .then(res => {
+          debugger
+      })
+  }
+
   updateMealList= (newMeal) => {
     edamunApi.searchMeal(newMeal.uri)
       .then(res => {
@@ -142,7 +150,7 @@ class MealPlanner extends Component {
 
           <div className='two column row' style={{paddingTop: 0}}>
             <div className='column'>
-              <button className='ui fluid button'>Save</button>
+              <button onClick={() => this.handleSave(this.props.id, this.state.meals)} className='ui fluid button'>Save</button>
             </div>
             <div className='column'>
               <button className='ui fluid button' onClick={this.props.history.goBack}>Cancel</button>

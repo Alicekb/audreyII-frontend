@@ -21,5 +21,19 @@ export default {
       method: 'get',
       headers: headers,
     }).then(parseRes)
+  },
+  updateDay(id, meals, token) {
+    const headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin':'*',
+      'Authorization': 'Bearer '+ token
+    }
+    const body = JSON.stringify(meals)
+    return fetch(`http://localhost:3001/v1/days/${id}`, {
+      method: 'put',
+      headers: headers,
+      body: body
+    }).then(parseRes)
   }
 }
