@@ -82,10 +82,6 @@
     text-align: left;
   }
 
-  /*.printing-grocery li {
-    width: 100% !important;
-  }*/
-
   .printing-grocery li:before {
     content: "\2610";
     margin-right:5px;
