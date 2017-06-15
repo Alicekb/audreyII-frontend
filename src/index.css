@@ -71,10 +71,6 @@
     margin: 0;
   }
 
-  .printing-grocery {
-    display: none;
-  }
-
   .printing-grocery ul {
     margin: 0;
     padding: 0 !important;
