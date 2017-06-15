@@ -41,15 +41,15 @@ class Week extends Component {
       <div>
         <div className='ui center aligned grid container '>
           <Date week={this.props.location.state.id } year={this.props.location.state.year}/>
-          <div className='ui grid'>
-            <div className='ui row'>
+          <div className='ui grid '>
+            <div className='ui row printing-days'>
               <div className='ui divided container seven column grid stackable'>
                 {days}
               </div>
             </div>
             <GroceryList ingredients={ingredientsArray}/>
 
-            <div className='two column row' style={{paddingTop: '0'}}>
+            <div className='two column row printing-display' style={{paddingTop: '0'}}>
               <div className='column'>
                 <button className='ui fluid button' onClick={this.props.history.goBack}>Back</button>
               </div>
@@ -59,7 +59,6 @@ class Week extends Component {
               </div>
             </div>
           </div>
-          
         </div>
       </div>
     );

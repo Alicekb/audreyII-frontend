@@ -2,7 +2,7 @@ import React from 'react';
 import shortid from 'shortid';
 
 const GroceryList = (props) => (
-   <div className='row'>
+   <div className='row printing-grocery'>
       <div className='ui divided four column grid container' style={{background: '#fff'}}>
         <h2><u>Groceries</u></h2>
         { props.ingredients.map((ingredients, index) => {

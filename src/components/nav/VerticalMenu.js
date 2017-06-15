@@ -21,7 +21,7 @@ export default class VerticalMenu extends Component {
 
   render() {
     return(
-      <div>
+      <div className='printing-display' >
         {
           this.props.loggedIn ?
             <div className='ui vertical menu' style={navContainer}>
