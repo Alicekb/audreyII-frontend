@@ -40,6 +40,20 @@
   .ui.grid {
     margin-top: 0;
   }
+
+  .grocery-list h2 {
+    margin-bottom: 0;
+  }
+
+  .grocery-list ul {
+    padding: 0 !important;
+    text-align: left;
+  }
+
+  /*.grocery-list li:before {
+    content: '\2610';
+    margin-right:5px;
+  }*/
 }
 
 @media print {
