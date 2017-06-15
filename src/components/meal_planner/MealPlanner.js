@@ -145,7 +145,7 @@ class MealPlanner extends Component {
       })
     return (
       <div className='ui center aligned grid'>
-        <h1>{this.props.name}</h1>
+        <h1 className='row' style={{padding: 0}}>{this.props.name}</h1>
         <div className='ui grid container stackable'>
           <div className='two column row'>
             <div className='ui column grid container'>
