@@ -59,7 +59,7 @@ export default class Calendar extends Component {
     }
 
     const weeks = 
-      this.state.weeks.map((id) => {
+      this.state.weeks.map((id, index) => {
         return <button 
           type="button" 
           className='column text vertical center' 
@@ -68,7 +68,7 @@ export default class Calendar extends Component {
           onClick={() => { this.handleClick(id)}}
         >
           <h3 style={{marginTop: 0}}>
-            Week {id}
+            Week {index + 1}
           </h3>
         </button>
       })
