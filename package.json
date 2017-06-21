@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "halogen": "^0.1.10",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dnd": "^2.4.0",

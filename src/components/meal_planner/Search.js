@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import shortid from 'shortid'
 import edamunApi from '../../api/EdamunApi'
 
-import ReactScrollbar from 'react-scrollbar-js';
-
-import Meal from './Meal';
+import ReactScrollbar from 'react-scrollbar-js'
+import Meal from './Meal'
+import Loader from 'halogen/BeatLoader'
 
 export default class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
       search: '',
-      searchResults: [],
     }
   }
 
@@ -57,6 +56,9 @@ export default class Search extends Component {
         </div>
         <ReactScrollbar style={{width: '100%', height: 500, backgroundColor: '#fff', padding: '5px'}}>
           <div className='should-have-a-children scroll-me'>
+            <div className='ui fluid button disabled' style={{background: '#fff'}}>
+              <Loader color="#5D995D" size="16px" margin="14px" />
+            </div>
             {meals}
           </div>
         </ReactScrollbar>
