@@ -16,7 +16,7 @@ import NoMatch from './components/Nav/NoMatch';
 import VerticalMenu from './components/Nav/VerticalMenu';
 
 import { tokenSignup, logout } from './actions/auth';
-import { requestMeals } from './actions/search'
+import { requestMeals, resetSearch } from './actions/search'
 
 class App extends Component {
   static propTypes = { 
@@ -62,6 +62,7 @@ class App extends Component {
                   <MealPlanner 
                     id={id}
                     name={name}
+                    searchReset={this.props.resetSearch}
                     searchLoading={this.props.searchLoading}
                     searchResults={this.props.searchResults}
                     requestMeals={this.props.requestMeals}
@@ -96,5 +97,5 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { tokenSignup, logout, requestMeals})(App);
+export default connect(mapStateToProps, { tokenSignup, logout, requestMeals, resetSearch })(App);
 

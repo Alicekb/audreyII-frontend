@@ -38,6 +38,10 @@ class MealPlanner extends Component {
       })
   }
 
+  componentWillUnmount() {
+    this.props.searchReset()
+  }
+
   handleInfo = (meal, remove) => {
     const { name, ingredients, calories, recipe } = meal
     this.setState({
