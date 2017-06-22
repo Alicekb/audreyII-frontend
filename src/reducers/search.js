@@ -26,6 +26,13 @@ export default (state = initState, action) => {
         errors: action.errors || {}
       }
 
+      case 'SEARCH_RESET':
+        return {
+          loading: false,
+          results: [],
+          errors: {}
+        }
+
     default:
       return state;
   }

@@ -20,6 +20,12 @@ const searchFailure = (errors) => {
   }
 }
 
+const searchReset = () => {
+  return {
+    type: 'SEARCH_RESET'
+  }
+}
+
 export const requestMeals = (search) => {
   return dispatch => {
     dispatch(searchRequest())
@@ -39,3 +45,9 @@ export const requestMeals = (search) => {
 
   }
 } 
+
+export const resetSearch = () => {
+  return dispatch => {
+    dispatch(searchReset())
+  }
+}
