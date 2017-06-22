@@ -115,7 +115,7 @@ class MealPlanner extends Component {
   mealArray = (meal) => {
     let newArray = this.state.meals.slice()
     if (meal) {
-      const unique = newArray.every((object) => { return object.name !== meal.name })
+      const unique = newArray.every((mealObject) => { return mealObject.name !== meal.name })
       if (unique === true) {
         newArray.push(meal)
         return newArray
@@ -141,7 +141,12 @@ class MealPlanner extends Component {
     const { name, ingredients, calories, recipe, removable } = this.state.infoCard
     const mealsArray = this.mealArray()
     const ingredientsArray = ingredients.map((ingredient) => {
-        return <li className='column' key={shortid.generate()} style={{padding: 0}}> {ingredient} </li>
+        return <li 
+          className='column' 
+          key={shortid.generate()} 
+          style={{padding: 0}}>
+           {ingredient} 
+        </li>
       })
     return (
       <div className='ui center aligned grid'>
@@ -166,6 +171,7 @@ class MealPlanner extends Component {
             <div className='column'>
               <Search 
                 handleInfo={(meal) => this.handleInfo(meal)}
+                searchMeal={edamunApi.searchMeal}
                 searchLoading={this.props.searchLoading}
                 searchResults={this.props.searchResults}
                 requestMeals={this.props.requestMeals}

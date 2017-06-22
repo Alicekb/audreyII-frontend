@@ -24,17 +24,22 @@ export default class Search extends Component {
     return this.props.requestMeals(this.state.search)
   }
 
-  // handleClick = (uri) => {
-  //   edamunApi.searchMeal(uri)
-  //     .then(res => {
-  //       this.props.handleInfo(res)
-  //     })
-  // }
+  handleClick = (uri) => {
+    this.props.searchMeal(uri)
+      .then(res => {
+        this.props.handleInfo(res)
+      })
+  }
 
   render() {
     const { searchResults, searchLoading } = this.props
     const meals = searchResults.map((meal) => {
-      return <Meal key={shortid.generate()} name={meal.name} uri={meal.uri} disabled={false} handleClick={() => this.handleClick(meal.uri)}/>
+      return <Meal 
+        key={shortid.generate()}
+        name={meal.name}
+        uri={meal.uri}
+        disabled={false}
+        handleClick={() => this.handleClick(meal.uri)}/>
     })
     return (
       <div>
