@@ -49,9 +49,9 @@ export default class Search extends Component {
         </div>
         <ReactScrollbar style={{width: '100%', height: 500, backgroundColor: '#fff', padding: '5px'}}>
           <div className='should-have-a-children scroll-me'>
-            <div className='ui fluid button disabled' style={{background: '#fff'}}>
+            { searchLoading ? <div className='ui fluid button disabled' style={{background: '#fff'}}>
               <Loader color="#5D995D" size="16px" margin="14px" />
-            </div>
+            </div> : (null) }
 
             {meals}
           </div>

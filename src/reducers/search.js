@@ -9,7 +9,8 @@ export default (state = initState, action) => {
     case 'SEARCH_REQUEST':
       return {
         ...state,
-        loading: true
+        loading: true,
+        results: []
       }
 
     case 'SEARCH_SUCCESS':
