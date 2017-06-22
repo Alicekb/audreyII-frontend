@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import shortid from 'shortid'
-import edamunApi from '../../api/EdamunApi'
 
 import ReactScrollbar from 'react-scrollbar-js'
 import Meal from './Meal'
@@ -22,29 +21,18 @@ export default class Search extends Component {
 
   onSubmit = (ev) => {
     ev.preventDefault()
-    return edamunApi.searchRecipes(this.state.search)
-      .then(res => {
-        const results = res.hits.map((meal) => {
-          return {
-            name: meal.recipe.label,
-            uri: meal.recipe.uri
-          }
-        })
-        this.setState({
-          searchResults: results
-        })
-      })
+    return this.props.requestMeals(this.state.search)
   }
 
-  handleClick = (uri) => {
-    edamunApi.searchMeal(uri)
-      .then(res => {
-        this.props.handleInfo(res)
-      })
-  }
+  // handleClick = (uri) => {
+  //   edamunApi.searchMeal(uri)
+  //     .then(res => {
+  //       this.props.handleInfo(res)
+  //     })
+  // }
 
   render() {
-    const { searchResults } = this.state
+    const { searchResults, searchLoading } = this.props
     const meals = searchResults.map((meal) => {
       return <Meal key={shortid.generate()} name={meal.name} uri={meal.uri} disabled={false} handleClick={() => this.handleClick(meal.uri)}/>
     })
@@ -59,6 +47,7 @@ export default class Search extends Component {
             <div className='ui fluid button disabled' style={{background: '#fff'}}>
               <Loader color="#5D995D" size="16px" margin="14px" />
             </div>
+
             {meals}
           </div>
         </ReactScrollbar>

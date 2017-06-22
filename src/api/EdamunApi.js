@@ -11,7 +11,7 @@ const parseRes = (res) => {
 }
 
 export default {
-  searchRecipes(query) {
+  searchMeals(query) {
     return fetch(`https://api.edamam.com/search?q=${query}&app_id=c4ee5e52&app_key=20febab47902d47feb3f2421d8af6d4c&to=30`,
     {
       method: 'get',

@@ -8,6 +8,7 @@ export default (state = initState, action) => {
   switch(action.type) {
     case 'SEARCH_REQUEST':
       return {
+        ...state,
         loading: true
       }
 

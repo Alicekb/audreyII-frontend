@@ -16,6 +16,7 @@ import NoMatch from './components/Nav/NoMatch';
 import VerticalMenu from './components/Nav/VerticalMenu';
 
 import { tokenSignup, logout } from './actions/auth';
+import { requestMeals } from './actions/search'
 
 class App extends Component {
   static propTypes = { 
@@ -56,18 +57,25 @@ class App extends Component {
             <PrivateRoute exact path="/week" component={Week}/>
             <Route path='/week/:name/:id' 
               render={({ match }) => {
-                const id = match.params.id
-                const name = match.params.name
+                const {id, name } = match.params
                 return ( this.props.isAuthenticated ? (
-                  <MealPlanner id={id} name={name}/> ) : (
-                    <Redirect push to='/welcome'/>
+                  <MealPlanner 
+                    id={id}
+                    name={name}
+                    searchLoading={this.props.searchLoading}
+                    searchResults={this.props.searchResults}
+                    requestMeals={this.props.requestMeals}
+                  /> ) : (
+                  <Redirect push to='/welcome'/>
                   )
                 ); 
               }}
             />
             <PrivateRoute path="/calendar" 
-              component={() => (<Calendar
-                id={this.props.currentUser.current_calendar}/>)
+              component={() => 
+                (<Calendar
+                  id={this.props.currentUser.current_calendar}
+                />)
               }
             />
             <PrivateRoute path="/welcome" component={() => (<Welcome name={this.props.currentUser.username}/>)}/>
@@ -88,5 +96,5 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { tokenSignup, logout })(App);
+export default connect(mapStateToProps, { tokenSignup, logout, requestMeals})(App);
 

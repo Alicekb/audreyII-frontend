@@ -20,10 +20,10 @@ const searchFailure = (errors) => {
   }
 }
 
-export const requestRecipes = (search) => {
+export const requestMeals = (search) => {
   return dispatch => {
     dispatch(searchRequest())
-    return edamunApi.searchRecipes(search)
+    return edamunApi.searchMeals(search)
     .then(res => {
       const results = res.hits.map((meal) => {
         return {
@@ -31,7 +31,7 @@ export const requestRecipes = (search) => {
           uri: meal.recipe.uri
         }
       })
-      dispatch(weekSuccess(results))
+      dispatch(searchSuccess(results))
     })
     .catch(error => {
       dispatch(searchFailure(error))

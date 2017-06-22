@@ -164,7 +164,12 @@ class MealPlanner extends Component {
               />
             </div>
             <div className='column'>
-              <Search handleInfo={(meal) => this.handleInfo(meal)}/>
+              <Search 
+                handleInfo={(meal) => this.handleInfo(meal)}
+                searchLoading={this.props.searchLoading}
+                searchResults={this.props.searchResults}
+                requestMeals={this.props.requestMeals}
+              />
             </div>
           </div>
 
