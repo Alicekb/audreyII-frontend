@@ -49,11 +49,6 @@
     padding: 0 !important;
     text-align: left;
   }
-
-  /*.grocery-list li:before {
-    content: '\2610';
-    margin-right:5px;
-  }*/
 }
 
 @media print {

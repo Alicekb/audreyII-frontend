@@ -1,18 +1,7 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-
-const nav = {
-  paddingLeft: '1em',
-  marginTop: '1em'
-}
-
-const navContainer = {
- float: 'left',
- margin: '0',
- width: '7%',
- background: '#fff',
- minHeight: '100vh'
-}
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { Image, Menu } from 'semantic-ui-react'
+import logo from '../Main/logo.svg'
 
 export default class VerticalMenu extends Component {
   handleLogout = () => {
@@ -24,17 +13,23 @@ export default class VerticalMenu extends Component {
       <div className='printing-display' >
         {
           this.props.loggedIn ?
-            <div className='ui vertical menu' style={navContainer}>
-              <div style={nav}>
-                <h4><Link to='/welcome'>Home</Link></h4>
-                <h4><Link to='/calendar'>Calendar</Link></h4>
-                <h4><Link to='/' onClick={this.handleLogout}>Log Out</Link></h4>
-              </div>
-            </div> :
+          <Menu>
+            <Menu.Item name='audreyII'>
+              AUDREYII
+            </Menu.Item>
+            <Menu.Item name='welcome'>
+              <Link to='/welcome'>Home</Link>
+            </Menu.Item>
+            <Menu.Item name='calendar'>
+              <Link to='/calendar'>Calendar</Link>
+            </Menu.Item>
+            <Menu.Item name='calendar' onClick={() => this.props.logout()}>
+              <Link to='/'>Log Out</Link>
+            </Menu.Item>
+          </Menu> :
             null
         }
       </div>
-
     )
   }
 }
