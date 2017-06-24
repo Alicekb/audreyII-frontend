@@ -1,4 +1,4 @@
-  @media screen {
+@media screen {
     body {
     color: #5D995D;
     background: rgba(84,115,148,1);
@@ -20,21 +20,6 @@
   .box {
     background-color: #fff;
     height: 15em;
-  }
-
-  @media (min-width:768px) {
-    h1 {
-      font-size: 3em;
-      margin: 0;
-        text-shadow:
-    -1px -1px 0 #fff,  
-      1px -1px 0 #fff,
-      -1px 1px 0 #fff,
-      1px 1px 0 #fff;
-    }
-    h3 {
-      margin: 0;
-    }
   }
 
   .ui.grid {
