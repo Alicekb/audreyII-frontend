@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Image, Menu } from 'semantic-ui-react'
-import logo from '../Main/logo.svg'
+import { Menu } from 'semantic-ui-react'
 
 export default class VerticalMenu extends Component {
   handleLogout = () => {
