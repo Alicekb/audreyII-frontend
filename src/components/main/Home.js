@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
+import { Image, Grid, Segment, Header, Container, Button } from 'semantic-ui-react'
 import logo from './logo.svg';
 
 import LoginForm from './Forms/LoginForm';
 import SignupForm from './Forms/SignupForm';
 import { signup, login } from '../../actions/auth'
-
-const homeStyle = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)'
-}
 
 class Home extends Component {
   constructor(props) {
@@ -45,53 +39,54 @@ class Home extends Component {
     }
 
     return (
-      <div className='ui grid container center aligned' style={homeStyle}>
-        <div className='ui divided two column row'>
-          <div className='ui column' style={{background: '#fff', padding: '2em'}}>
-            <img src={logo} className="ui fluid tiny centered image" alt="logo" />
-            <h1 style={{marginTop: 0}}>Audrey II</h1>
-            <p>Yummy java main course salt sustainable.
-              Main course grocery shopping yummy lovely fruit dish cookie
-              custard quinoa healthy pub luncheon. Salt lunch sushi
-              dinner delicious marinate bread flavor farm herbes butter.
-              Butter main course organic ingredients liquor chopsticks
-              sustainable biological sous-chef bartender wine sweet broil simmer.
-              Gluten free fruit quinoa fresh organic locally grown scent bistro tasty.
-              Recommendations gluten free blender. Wholesome authentic cuisine gastronome
-              vegetables al dente yummy cookie relish mustard fresh etiquette chopsticks.
-              Sour bar sustainable cuisine liquor bon appetit heating broil consumer
-              chocolate carrots main course.</p>
-          </div>
-
-          <div className='ui column' style={{background: '#fff', padding: '2em'}}>
+      <Grid stackable columns={2} divided style={{padding: '1em'}}>
+        <Grid.Column>
+            <Segment>
+              <Image src={logo} size='tiny' centered/>
+              <Container>
+                <Header as='h1' textAlign='center'>Audrey II</Header>
+                <p>Yummy java main course salt sustainable.
+                  Main course grocery shopping yummy lovely fruit dish cookie
+                  custard quinoa healthy pub luncheon. Salt lunch sushi
+                  dinner delicious marinate bread flavor farm herbes butter.
+                  Butter main course organic ingredients liquor chopsticks
+                  sustainable biological sous-chef bartender wine sweet broil simmer.
+                  Gluten free fruit quinoa fresh organic locally grown scent bistro tasty.
+                  Recommendations gluten free blender. Wholesome authentic cuisine gastronome
+                  vegetables al dente yummy cookie relish mustard fresh etiquette chopsticks.
+                  Sour bar sustainable cuisine liquor bon appetit heating broil consumer
+                  chocolate carrots main course.</p>
+                </ Container>
+            </ Segment>
+        </ Grid.Column> 
+        <Grid.Column>
+          <Segment>
             {this.state.loginForm === true ? (
-              <span>
+              <Container>
                 <LoginForm onSubmit={this.handleLogin}/>
-                <button 
+                <Button 
                   type='button' 
-                  className='ui button' 
                   style={{background: 'none'}}
                   onClick={ this.onClick}
                 >
                   Signup instead
-                </button>
-              </span>
+                </Button>
+              </ Container>
             ) : (
-              <span>
+              <Container>
                <SignupForm onSubmit={this.handleSignup}/>
-                <button 
+                <Button
                   type='button' 
-                  className='ui button'
                   style={{background: 'none'}} 
                   onClick={ this.onClick }
                 >
                   Login instead
-                </button>
-              </span>
+                </Button>
+              </ Container>
             )}  
-          </div>
-        </div>
-      </div>
+          </ Segment>
+        </ Grid.Column>
+      </ Grid>
    );
   }
 }
