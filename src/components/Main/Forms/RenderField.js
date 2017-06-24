@@ -10,7 +10,7 @@ const RenderField = ({
     <label>{label}</label>
     {error && <span style={{color: 'red', float: 'right'}}>{error}</span>}
     <div className='field'>
-      <input {...input} type={type} placeholder={label} />
+      <input {...input} type={type}/>
     </div>
   </div>
 )
