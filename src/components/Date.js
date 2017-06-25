@@ -1,5 +1,5 @@
 import React from 'react'
-import {Grid, Segment, Header, Container, Button } from 'semantic-ui-react'
+import {Grid, Header} from 'semantic-ui-react'
 
 const Date = ({week, year}) => (
   <Grid.Row>
