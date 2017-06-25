@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
+import {Grid, Segment, Container, Button } from 'semantic-ui-react'
 
 import { connect } from 'react-redux';
 import { fetchWeek, resetWeek } from '../../actions/week';
@@ -38,29 +39,29 @@ class Week extends Component {
     const ingredientsArray = this.chunkArray(this.props.ingredients, 5)
 
     return (
-      <div>
-        <div className='ui center aligned grid container '>
-          <Date week={this.props.location.state.id } year={this.props.location.state.year}/>
-          <div className='ui grid '>
-            <div className='ui row printing-days'>
-              <div className='ui divided container seven column grid stackable'>
+      <Container>
+        <Segment>
+          <Grid textAlign='center'>
+            <Date week={this.props.location.state.id } year={this.props.location.state.year}/>
+            <Grid.Row className='printing-days'>
+              <Grid stackable columns={7}>
                 {days}
-              </div>
-            </div>
+              </Grid>
+            </Grid.Row>
             <GroceryList ingredients={ingredientsArray}/>
 
-            <div className='two column row printing-display' style={{paddingTop: '0'}}>
-              <div className='column'>
-                <button className='ui fluid button' onClick={this.props.history.goBack}>Back</button>
-              </div>
+            <Grid.Row columns={2} className='printing-display' style={{paddingTop: '0'}}>
+              <Grid.Column>
+                <Button fluid color='green' onClick={() => window.print()}>Print Page</Button>
+              </Grid.Column>
 
-              <div className='column'>
-                <button className='ui fluid button' onClick={() => window.print()}>Print Page</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+              <Grid.Column>
+                <Button fluid color='grey' onClick={this.props.history.goBack}>Back</Button>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment>
+      </Container>
     );
   }
 }
