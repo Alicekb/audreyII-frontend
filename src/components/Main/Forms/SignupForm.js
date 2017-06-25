@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Field, reduxForm} from 'redux-form'
 import RenderField from './RenderField.js'
-import { Form, Button, Segment } from 'semantic-ui-react'
+import { Form, Button } from 'semantic-ui-react'
 import validate from './Validate'
 import PropTypes from 'prop-types'
 
@@ -57,7 +57,7 @@ class SignupForm extends Component {
           </Form.Field>
 
           <Button basic color='green' type="submit" disabled={pristine || submitting || invalid}>Submit</Button>
-          <Button basic type="button" type="button" disabled={pristine || submitting} onClick={reset}>
+          <Button basic type="button" disabled={pristine || submitting} onClick={reset}>
             Clear Values
           </Button>
       </Form>

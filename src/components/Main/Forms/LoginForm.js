@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Field, reduxForm} from 'redux-form'
-import { Form, Button, Segment } from 'semantic-ui-react'
+import { Form, Button } from 'semantic-ui-react'
 import RenderField from './RenderField.js'
 import validate from './Validate'
 import PropTypes from 'prop-types'
