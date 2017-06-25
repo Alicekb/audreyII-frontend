@@ -39,8 +39,9 @@ class Home extends Component {
     }
 
     return (
-      <Grid stackable columns={2} divided style={{padding: '1em'}}>
-        <Grid.Column>
+      <Container>
+        <Grid stackable divided columns={2}>
+          <Grid.Column>
             <Segment>
               <Image src={logo} size='tiny' centered/>
               <Container>
@@ -57,12 +58,11 @@ class Home extends Component {
                   Sour bar sustainable cuisine liquor bon appetit heating broil consumer
                   chocolate carrots main course.</p>
                 </ Container>
-            </ Segment>
-        </ Grid.Column> 
-        <Grid.Column>
-          <Segment>
+            </Segment>
+          </ Grid.Column> 
+          <Grid.Column>
             {this.state.loginForm === true ? (
-              <Container>
+              <Segment>
                 <LoginForm onSubmit={this.handleLogin}/>
                 <Button 
                   type='button' 
@@ -71,10 +71,10 @@ class Home extends Component {
                 >
                   Signup instead
                 </Button>
-              </ Container>
+              </Segment>
             ) : (
-              <Container>
-               <SignupForm onSubmit={this.handleSignup}/>
+              <Segment>
+                <SignupForm onSubmit={this.handleSignup}/>
                 <Button
                   type='button' 
                   style={{background: 'none'}} 
@@ -82,11 +82,11 @@ class Home extends Component {
                 >
                   Login instead
                 </Button>
-              </ Container>
+              </Segment>
             )}  
-          </ Segment>
-        </ Grid.Column>
-      </ Grid>
+          </ Grid.Column>
+        </ Grid>
+      </Container>
    );
   }
 }
