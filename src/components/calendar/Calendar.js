@@ -57,7 +57,7 @@ export default class Calendar extends Component {
     const weeks = 
       this.state.weeks.map((id, index) => {
         return <Button
-          size='Medium'
+          size='medium'
           style={{backgroundColor: '#fff'}}
           key={shortid.generate()} 
           onClick={() => { this.handleClick(id)}}
