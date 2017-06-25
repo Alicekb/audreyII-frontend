@@ -22,9 +22,7 @@ export default class VerticalMenu extends Component {
             <Menu.Item name='calendar'>
               <Link to='/calendar'>Calendar</Link>
             </Menu.Item>
-            <Menu.Item name='calendar' onClick={() => this.props.logout()}>
-              <Link to='/'>Log Out</Link>
-            </Menu.Item>
+            <Menu.Item position='right' name='logout' onClick={() => this.props.logout()} />
           </Menu> :
             null
         }
