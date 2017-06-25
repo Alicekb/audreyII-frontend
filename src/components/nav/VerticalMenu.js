@@ -12,7 +12,7 @@ export default class VerticalMenu extends Component {
       <div className='printing-display' >
         {
           this.props.loggedIn ?
-          <Menu>
+          <Menu style={{marginBottom: '1em'}}>
             <Menu.Item name='audreyII'>
               AUDREYII
             </Menu.Item>
