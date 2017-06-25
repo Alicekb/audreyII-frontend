@@ -23,7 +23,7 @@
   font-weight: bold;
   line-height: 1.28571429em;
   text-transform: none;
-  color: rgba(0, 0, 0, 0.87);
+  color: #5D995D;
 }
 .ui.header:first-child {
   margin-top: -0.14285714em;
@@ -403,13 +403,13 @@ a.ui.inverted.yellow.header:hover {
 /*--- Green ---*/
 
 .ui.green.header {
-  color: #21BA45 !important;
+  color: #5D995D !important;
 }
 a.ui.green.header:hover {
-  color: #16ab39 !important;
+  color: #518c51 !important;
 }
 .ui.green.dividing.header {
-  border-bottom: 2px solid #21BA45;
+  border-bottom: 2px solid #5D995D;
 }
 
 /* Inverted */
