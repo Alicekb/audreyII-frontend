@@ -1,19 +1,29 @@
 import React from 'react';
 import shortid from 'shortid';
+import {Grid, Header, List} from 'semantic-ui-react'
 
-const GroceryList = (props) => (
-   <div className='row grocery-list printing-grocery'>
-      <div className='ui five column grid container' style={{background: '#fff'}}>
-        <h2><u>Groceries</u></h2>
-        { props.ingredients.map((ingredients, index) => {
-          return <ul key={shortid.generate()} className='column'>
+const GroceryList = ( { ingredients }) => (
+   <Grid.Row className='printing-grocery'>
+      <Grid stackable columns={5} style={{background: '#fff'}}>
+        <Header as='h2'><u>Groceries</u></Header>
+        { ingredients.map((ingredients, index) => {
+          return <List
+            celled
+            key={shortid.generate()}
+            className='column grocery-list'
+          >
             { ingredients.map((ingredient)=> {
-                return <li key={shortid.generate()}>{ingredient}</li>
+                return <List.Item
+                  key={shortid.generate()}
+                  className='printing-li'
+                  >
+                    {ingredient}
+                </List.Item>
             })}
-          </ul>
+          </List>
         })}
-      </div>
-  </div>
+      </Grid>
+  </Grid.Row>
 )
 
 export default GroceryList

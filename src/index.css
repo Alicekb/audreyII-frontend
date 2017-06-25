@@ -1,5 +1,5 @@
 @media screen {
-    body {
+  body {
     color: #5D995D;
     background: rgba(84,115,148,1);
     background: -moz-linear-gradient(top, rgba(84,115,148,1) 0%, rgba(29,40,51,1) 100%);
@@ -13,66 +13,27 @@
     background-attachment: fixed;
   }
 
-  ul {
-    list-style-type: none;
-  }
-
   .box {
     background-color: #fff;
     height: 15em;
   }
+}
 
-  .ui.grid {
-    margin-top: 0;
-  }
-
-  .grocery-list h2 {
-    margin-bottom: 0;
-  }
-
-  .grocery-list ul {
-    padding: 0 !important;
-    text-align: left;
-  }
+.grocery-list {
+  padding: 0 !important;
+  text-align: left;
 }
 
 @media print {
-  .ui {
-    margin: 0 !important;
-  }
-  
-  .ui.grid {
-    padding-top: 0 !important;
-  }
   .printing-display {
     display: none !important;
-  }
-
-  .printing-days {
-    margin-left: 15px;
-  }
-
-  h1 {
-    font-size: 3em;
-    margin: 0;
   }
 
   .box {
     height: 100%;
   }
 
-  .box h3 {
-    margin: 0;
-  }
-
-  .printing-grocery ul {
-    margin: 0;
-    padding: 0 !important;
-    list-style-type: none;
-    text-align: left;
-  }
-
-  .printing-grocery li:before {
+  .printing-li:before {
     content: "\2610";
     margin-right:5px;
   }
