@@ -1,13 +1,14 @@
-import React from 'react';
+import React from 'react'
+import {Grid, Segment, Header, Container, Button } from 'semantic-ui-react'
 
 const Date = ({week, year}) => (
-  <div className='column row' style={{padding: '0'}}>
+  <Grid.Row>
     {!!week ? (
-      <h1>Week {week} - {year}</h1>
+      <Header as='h1'>Week {week} - {year}</Header>
     ) : (
-      <h1>{year}</h1>
+      <Header as='h1'>{year}</Header>
     )}
-  </div>
+  </Grid.Row>
 );
 
 export default Date;

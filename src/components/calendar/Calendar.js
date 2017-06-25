@@ -1,14 +1,10 @@
-import React, { Component } from 'react';
-import audreyApi from '../../api/AudreyApi';
-import shortid from 'shortid';
+import React, { Component } from 'react'
+import {Grid, Segment, Header, Container, Button } from 'semantic-ui-react'
+import audreyApi from '../../api/AudreyApi'
+import shortid from 'shortid'
 
 import Date from '../Date';
 import { Redirect } from 'react-router-dom';
-
-const buttonStyle = {
-  backgroundColor: '#fff',
-  border: 0
-}
 
 export default class Calendar extends Component {
   constructor(props) {
@@ -60,28 +56,27 @@ export default class Calendar extends Component {
 
     const weeks = 
       this.state.weeks.map((id, index) => {
-        return <button 
-          type="button" 
-          className='column text vertical center' 
-          style={buttonStyle} 
+        return <Button
+          size='Medium'
+          style={{backgroundColor: '#fff'}}
           key={shortid.generate()} 
           onClick={() => { this.handleClick(id)}}
         >
-          <h3 style={{marginTop: 0}}>
+          <Header as='h3' style={{marginTop: 0}}>
             Week {index + 1}
-          </h3>
-        </button>
+          </Header>
+        </Button>
       })
 
     return (
-      <div>
-        <div className='ui center aligned grid'>
+      <Container>
+        <Segment textAlign='center'>
           <Date year={this.state.year}/>
-            <div className='ui divided four column container grid'>
-              {weeks}
-            </div>
-        </div>
-      </div>
+          <Grid divided columns={4}>
+            {weeks}
+          </Grid>
+        </Segment>
+      </Container>
     )
   }
 }
