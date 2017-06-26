@@ -54,5 +54,20 @@ export default {
       method: 'delete',
       headers: headers,
     }).then(parseRes)
+  },
+  createWeek(id, token) {
+    const headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer '+ token
+    }
+    return fetch(`http://localhost:3001/v1/weeks`, {
+      method: 'post',
+      headers: headers,
+      body: JSON.stringify({ week: {
+        calendar_id: id
+      } 
+    })
+    }).then((parseRes))
   }
 }
