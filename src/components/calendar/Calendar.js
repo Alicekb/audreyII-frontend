@@ -58,7 +58,8 @@ export default class Calendar extends Component {
       this.state.weeks.map((id, index) => {
         return <Button
           size='medium'
-          style={{backgroundColor: '#fff'}}
+          className='column'
+          style={{backgroundColor: '#fff', border: '1px solid #5D995D'}}
           key={shortid.generate()} 
           onClick={() => { this.handleClick(id)}}
         >
@@ -72,7 +73,7 @@ export default class Calendar extends Component {
       <Container>
         <Segment textAlign='center'>
           <Date year={this.state.year} style={{marginBottom: '1em'}}/>
-          <Grid divided columns={4} style={{marginTop: 0}}>
+          <Grid columns={5} textAlign='center' style={{marginTop: 0}}>
             {weeks}
           </Grid>
         </Segment>
