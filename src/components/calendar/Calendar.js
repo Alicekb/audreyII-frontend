@@ -39,10 +39,28 @@ export default class Calendar extends Component {
     })
   }
 
+  addWeek = (id) => {
+    let newWeek = this.state.weeks.slice()
+    newWeek.push(id)
+    this.setState({
+      weeks: newWeek
+    })
+  }
+
   handleClick(id) {
     this.setState({
       redirect: true,
       weekId: id
+    })
+  }
+
+  handleAddWeek = () => {
+    return audreyApi.createWeek(this.props.id, localStorage.getItem('token'))
+      .then(res => {
+        if (res === undefined) {
+          return null
+        }
+        this.addWeek(res.id)
     })
   }
 
@@ -72,6 +90,7 @@ export default class Calendar extends Component {
     return (
       <Container>
         <Segment textAlign='center'>
+          <Button compact floated='right' color='blue' onClick={this.handleAddWeek}>Add Week</Button>
           <Date year={this.state.year} style={{marginBottom: '1em'}}/>
           <Grid columns={5} textAlign='center' style={{marginTop: 0}}>
             {weeks}
