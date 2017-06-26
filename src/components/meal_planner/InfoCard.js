@@ -1,10 +1,5 @@
 import React from 'react'
-import {Grid, Segment, Container, Header, Button, List } from 'semantic-ui-react'
-
-const infoStyle = {
-  backgroundColor: '#fff',
-  paddingLeft: '.7em'
-}
+import {Grid, Segment, Header, Button, List } from 'semantic-ui-react'
 
 const InfoCard = ({ name, ingredients, calories, recipe, removable, handleDelete }) => (
     <Segment>

@@ -4,13 +4,6 @@ import { Grid, Segment } from 'semantic-ui-react'
 import { ItemTypes } from '../Types'
 import PropTypes from 'prop-types'
 
-const mealStyle = {
-  padding: '1em',
-  backgroundColor: '#fff',
-  height: '40%',
-  marginBottom: '.5em'
-}
-
 const mealTarget = {
   canDrop(props, monitor) {
     const arrayLength = props.mealsLength
