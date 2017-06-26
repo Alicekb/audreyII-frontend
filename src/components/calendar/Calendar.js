@@ -62,7 +62,7 @@ export default class Calendar extends Component {
           key={shortid.generate()} 
           onClick={() => { this.handleClick(id)}}
         >
-          <Header as='h3' style={{marginTop: 0}}>
+          <Header as='h3'>
             Week {index + 1}
           </Header>
         </Button>
@@ -71,8 +71,8 @@ export default class Calendar extends Component {
     return (
       <Container>
         <Segment textAlign='center'>
-          <Date year={this.state.year}/>
-          <Grid divided columns={4}>
+          <Date year={this.state.year} style={{marginBottom: '1em'}}/>
+          <Grid divided columns={4} style={{marginTop: 0}}>
             {weeks}
           </Grid>
         </Segment>
