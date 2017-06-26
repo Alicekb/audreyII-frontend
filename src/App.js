@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { 
   BrowserRouter as Router,
   Switch,
   Redirect,
-  Route } from 'react-router-dom';
-import PropTypes from 'prop-types';
+  Route } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import Week from './components/Week_planner/Week'
 import MealPlanner from './components/Meal_planner/MealPlanner'
-import Calendar from './components/Calendar/Calendar';
-import Welcome from './components/Main/Welcome';
-import Home from './components/Main/Home';
-import NoMatch from './components/Nav/NoMatch';
-import VerticalMenu from './components/Nav/VerticalMenu';
+import Calendar from './components/Calendar/Calendar'
+import Welcome from './components/Main/Welcome'
+import Home from './components/Main/Home'
+import NoMatch from './components/Nav/NoMatch'
+import VerticalMenu from './components/Nav/VerticalMenu'
 
-import { tokenSignup, logout } from './actions/auth';
+import { tokenSignup, logout } from './actions/auth'
 import { requestMeals, resetSearch } from './actions/search'
 
 class App extends Component {
@@ -47,7 +47,10 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <VerticalMenu logout={this.props.logout} loggedIn={this.props.isAuthenticated}/>
+          <VerticalMenu 
+            logout={this.props.logout}
+            loggedIn={this.props.isAuthenticated}
+          />
           <Switch>
             <Route exact path="/" 
               component={() => (<Home
