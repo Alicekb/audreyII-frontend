@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { DropTarget } from 'react-dnd';
-import { ItemTypes } from '../Types';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import { DropTarget } from 'react-dnd'
+import { Grid, Segment } from 'semantic-ui-react'
+import { ItemTypes } from '../Types'
+import PropTypes from 'prop-types'
 
 const mealStyle = {
   padding: '1em',
@@ -38,8 +39,12 @@ class MealList extends Component {
   render(){
     const { meals, connectDropTarget } = this.props
     return connectDropTarget(
-      <div className='container' style={mealStyle}>
-        {meals}
+      <div>
+        <Segment>
+          <Grid.Row>
+            {meals}
+          </Grid.Row>
+        </Segment>
       </div>
     )
   }

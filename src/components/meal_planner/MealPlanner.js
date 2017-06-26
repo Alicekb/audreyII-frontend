@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router';
+import React, { Component } from 'react'
+import { withRouter } from 'react-router'
+import {Grid, Segment, Container, Header, Button, List } from 'semantic-ui-react'
 
-import audreyApi from '../../api/AudreyApi';
-import edamunApi from '../../api/EdamunApi';
+import audreyApi from '../../api/AudreyApi'
+import edamunApi from '../../api/EdamunApi'
 import shortid from 'shortid';
 
-import MealList from './MealList';
-import InfoCard from './InfoCard';
-import Search from './Search';
-import Meal from './Meal';
+import MealList from './MealList'
+import InfoCard from './InfoCard'
+import Search from './Search'
+import Meal from './Meal'
 
 class MealPlanner extends Component {
   constructor(props, context) {
@@ -145,54 +146,54 @@ class MealPlanner extends Component {
     const { name, ingredients, calories, recipe, removable } = this.state.infoCard
     const mealsArray = this.mealArray()
     const ingredientsArray = ingredients.map((ingredient) => {
-        return <li 
-          className='column' 
-          key={shortid.generate()} 
-          style={{padding: 0}}>
+        return <List.Item
+          key={shortid.generate()}>
            {ingredient} 
-        </li>
+        </List.Item>
       })
     return (
-      <div className='ui center aligned grid'>
-        <h1 className='row' style={{padding: 0}}>{this.props.name}</h1>
-        <div className='ui grid container stackable'>
-          <div className='two column row'>
-            <div className='ui column grid container'>
-              <MealList 
-                meals={mealsArray} 
-                mealsLength={mealsArray.length}
-                handleUpdate={this.updateMealList}
-              />
-              <InfoCard
-                handleDelete={this.handleDelete}
-                name={name}
-                removable={removable}
-                ingredients={ingredientsArray} 
-                calories={calories} 
-                recipe={recipe}
-              />
-            </div>
-            <div className='column'>
-              <Search 
-                handleInfo={(meal) => this.handleInfo(meal)}
-                searchMeal={edamunApi.searchMeal}
-                searchLoading={this.props.searchLoading}
-                searchResults={this.props.searchResults}
-                requestMeals={this.props.requestMeals}
-              />
-            </div>
-          </div>
+      <Container>
+        <Segment>
+          <Grid stackable textAlign='center'>
+            <Header as='h1' style={{marginTop: '.5em'}}>{this.props.name}</Header>
+              <Grid.Row columns={2}>
+                <Grid.Column>
+                  <MealList 
+                    meals={mealsArray} 
+                    mealsLength={mealsArray.length}
+                    handleUpdate={this.updateMealList}
+                  />
+                  <InfoCard
+                    handleDelete={this.handleDelete}
+                    name={name}
+                    removable={removable}
+                    ingredients={ingredientsArray} 
+                    calories={calories} 
+                    recipe={recipe}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <Search 
+                    handleInfo={(meal) => this.handleInfo(meal)}
+                    searchMeal={edamunApi.searchMeal}
+                    searchLoading={this.props.searchLoading}
+                    searchResults={this.props.searchResults}
+                    requestMeals={this.props.requestMeals}
+                  />
+                </Grid.Column>
+              </Grid.Row>
 
-          <div className='two column row' style={{paddingTop: 0}}>
-            <div className='column'>
-              <button onClick={() => this.handleSave(this.props.id, this.state)} className='ui fluid button'>Save</button>
-            </div>
-            <div className='column'>
-              <button className='ui fluid button' onClick={this.props.history.goBack}>Cancel</button>
-            </div>
-          </div>
-        </div>
-      </div>
+              <Grid.Row columns={2}>
+                <Grid.Column>
+                  <Button fluid color='green' onClick={() => this.handleSave(this.props.id, this.state)}>Save</Button>
+                </Grid.Column>
+                <Grid.Column>
+                  <Button fluid color='grey' onClick={this.props.history.goBack}>Cancel</Button>
+                </Grid.Column>
+              </Grid.Row>
+          </Grid>
+        </Segment>
+      </Container>
     );
   }
 }

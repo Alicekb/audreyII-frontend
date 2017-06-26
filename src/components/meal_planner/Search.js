@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import shortid from 'shortid'
+import { Segment } from 'semantic-ui-react'
 
 import ReactScrollbar from 'react-scrollbar-js'
 import Meal from './Meal'
@@ -42,7 +43,7 @@ export default class Search extends Component {
         handleClick={() => this.handleClick(meal.uri)}/>
     })
     return (
-      <div>
+      <Segment>
         <div className="ui fluid input">
           <input type="text" placeholder="Search..." onChange={this.onChange}/>
           <button className='ui button' onClick={this.onSubmit}>Search</button>
@@ -56,7 +57,7 @@ export default class Search extends Component {
             {meals}
           </div>
         </ReactScrollbar>
-      </div>
+      </Segment>
     );
   }
 }
