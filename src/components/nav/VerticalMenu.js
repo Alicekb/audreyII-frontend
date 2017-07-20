@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Menu } from 'semantic-ui-react'
 
 export default class VerticalMenu extends Component {
