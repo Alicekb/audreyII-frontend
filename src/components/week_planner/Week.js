@@ -33,20 +33,17 @@ class Week extends Component {
   }
 
   render() {
-    const days = this.props.daysArray.map(day => {
+    const { ingredients, daysArray, location } = this.props
+    const days = daysArray.map(day => {
       return <Day key={shortid.generate()} id={day.id} name={day.day_name} />
     })
-    const { ingredients } = this.props
     const ingredientsArray = this.chunkArray(ingredients, 5)
 
     return (
       <Container>
         <Segment>
           <Grid textAlign="center">
-            <Date
-              week={this.props.location.state.id}
-              year={this.props.location.state.year}
-            />
+            <Date week={location.state.id} year={location.state.year} />
             <Grid.Row className="printing-days">
               <Grid stackable columns={7}>
                 {days}
