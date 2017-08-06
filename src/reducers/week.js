@@ -6,7 +6,7 @@ const initState = {
 }
 
 export default (state = initState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'WEEK_REQUEST':
       return {
         ...state,
@@ -32,6 +32,6 @@ export default (state = initState, action) => {
       return Object.assign({}, initState)
 
     default:
-      return state;
+      return state
   }
 }

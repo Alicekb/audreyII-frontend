@@ -36,7 +36,8 @@ class Week extends Component {
     const days = this.props.daysArray.map(day => {
       return <Day key={shortid.generate()} id={day.id} name={day.day_name} />
     })
-    const ingredientsArray = this.chunkArray(this.props.ingredients, 5)
+    const { ingredients } = this.props
+    const ingredientsArray = this.chunkArray(ingredients, 5)
 
     return (
       <Container>
