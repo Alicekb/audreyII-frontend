@@ -1,41 +1,41 @@
 import fetch from 'isomorphic-fetch'
 
-const parseRes = (res) => {
-  return res.json()
-    .then(json => {
-      if (!res.ok) {
-        return Promise.reject(json.errors)
-      }
-      return json
-    })
+const parseRes = res => {
+  return res.json().then(json => {
+    if (!res.ok) {
+      return Promise.reject(json.errors)
+    }
+    return json
+  })
 }
 
 export default {
   getData(id, url, token) {
     const headers = {
-      'Accept': 'application/json',
+      Accept: 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer '+ token
+      Authorization: 'Bearer ' + token
     }
     return fetch(url + id, {
       method: 'get',
-      headers: headers,
+      headers: headers
     }).then(parseRes)
   },
   addMeals(id, meal, token) {
     const headers = {
-      'Accept': 'application/json',
+      Accept: 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer '+ token
+      Authorization: 'Bearer ' + token
     }
     const { name, recipe, calories, ingredients } = meal
-    const body = JSON.stringify({ meal: {
+    const body = JSON.stringify({
+      meal: {
         name: name,
         recipe: recipe,
         calories: calories,
         day_id: id,
         ingredients: ingredients
-      } 
+      }
     })
 
     return fetch(`http://localhost:3001/v1/meals`, {
@@ -46,28 +46,29 @@ export default {
   },
   deleteMeals(id, token) {
     const headers = {
-      'Accept': 'application/json',
+      Accept: 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer '+ token
+      Authorization: 'Bearer ' + token
     }
     return fetch(`http://localhost:3001/v1/meals/${id}`, {
       method: 'delete',
-      headers: headers,
+      headers: headers
     }).then(parseRes)
   },
   createWeek(id, token) {
     const headers = {
-      'Accept': 'application/json',
+      Accept: 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer '+ token
+      Authorization: 'Bearer ' + token
     }
     return fetch(`http://localhost:3001/v1/weeks`, {
       method: 'post',
       headers: headers,
-      body: JSON.stringify({ week: {
-        calendar_id: id
-      } 
-    })
-    }).then((parseRes))
+      body: JSON.stringify({
+        week: {
+          calendar_id: id
+        }
+      })
+    }).then(parseRes)
   }
 }
