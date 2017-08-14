@@ -1,14 +1,15 @@
 import React from 'react'
-import {Grid, Header} from 'semantic-ui-react'
+import { Grid, Header } from 'semantic-ui-react'
 
-const Date = ({week, year}) => (
+const Date = ({ week, year }) =>
   <Grid.Row>
-    {!!week ? (
-      <Header as='h1'>Week {week} - {year}</Header>
-    ) : (
-      <Header as='h1'>{year}</Header>
-    )}
+    {!!week
+      ? <Header as="h1">
+          Week {week} - {year}
+        </Header>
+      : <Header as="h1">
+          {year}
+        </Header>}
   </Grid.Row>
-);
 
-export default Date;
+export default Date

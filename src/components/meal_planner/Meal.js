@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { DragSource } from 'react-dnd';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import { DragSource } from 'react-dnd'
+import PropTypes from 'prop-types'
 import { Button } from 'semantic-ui-react'
 
-import { ItemTypes } from '../Types';
+import { ItemTypes } from '../Types'
 
 const mealSource = {
   beginDrag(props) {
@@ -38,10 +38,15 @@ const propTypes = {
 
 class Meal extends Component {
   render() {
-    const {name, handleClick, connectDragSource } = this.props;
+    const { name, handleClick, connectDragSource } = this.props
     return connectDragSource(
       <div>
-        <Button fluid color='teal' onClick={handleClick} style={{border: '1px solid black'}}>
+        <Button
+          fluid
+          color="teal"
+          onClick={handleClick}
+          style={{ border: '1px solid black' }}
+        >
           {name}
         </Button>
       </div>

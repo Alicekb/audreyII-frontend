@@ -1,10 +1,17 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router'
-import {Grid, Segment, Container, Header, Button, List } from 'semantic-ui-react'
+import {
+  Grid,
+  Segment,
+  Container,
+  Header,
+  Button,
+  List
+} from 'semantic-ui-react'
 
 import audreyApi from '../../api/AudreyApi'
 import edamunApi from '../../api/EdamunApi'
-import shortid from 'shortid';
+import shortid from 'shortid'
 
 import MealList from './MealList'
 import InfoCard from './InfoCard'
@@ -13,7 +20,7 @@ import Meal from './Meal'
 
 class MealPlanner extends Component {
   constructor(props, context) {
-    super(props, context);
+    super(props, context)
     this.state = {
       meals: [],
       deleted: [],
@@ -22,15 +29,20 @@ class MealPlanner extends Component {
         removable: false,
         ingredients: ['EMPTY'],
         calories: 'EMPTY',
-        recipe: '' 
-      } 
+        recipe: ''
+      }
     }
   }
 
   componentDidMount() {
-    return audreyApi.getData(this.props.id,'http://localhost:3001/v1/days/',localStorage.getItem('token'))
+    return audreyApi
+      .getData(
+        this.props.id,
+        'http://localhost:3001/v1/days/',
+        localStorage.getItem('token')
+      )
       .then(res => {
-        if (res === undefined ) {
+        if (res === undefined) {
           return null
         }
         this.setState({
@@ -56,14 +68,14 @@ class MealPlanner extends Component {
     })
   }
 
-  handleDelete = (name) => {
+  handleDelete = name => {
     let newArray = this.state.meals.slice()
     let deleted = this.state.deleted.slice()
 
-    const results = newArray.filter((meal) => {
+    const results = newArray.filter(meal => {
       return meal.name !== name
     })
-    const deletedResult = newArray.filter((meal) => {
+    const deletedResult = newArray.filter(meal => {
       return meal.name === name
     })
     deleted.push(deletedResult[0])
@@ -76,8 +88,8 @@ class MealPlanner extends Component {
         removable: false,
         ingredients: ['EMPTY'],
         calories: 'EMPTY',
-        recipe: '' 
-      } 
+        recipe: ''
+      }
     })
   }
 
@@ -85,13 +97,13 @@ class MealPlanner extends Component {
     let newArray = state.meals.slice()
     let deleted = state.deleted.slice()
 
-    newArray.forEach((meal) => {
+    newArray.forEach(meal => {
       if (!meal.id) {
         audreyApi.addMeals(id, meal, localStorage.getItem('token'))
       }
     })
 
-    deleted.forEach((meal) => {
+    deleted.forEach(meal => {
       if (!!meal.id) {
         audreyApi.deleteMeals(meal.id, localStorage.getItem('token'))
       }
@@ -100,27 +112,28 @@ class MealPlanner extends Component {
     this.props.history.goBack()
   }
 
-  updateMealList= (newMeal) => {
-    edamunApi.searchMeal(newMeal.uri)
-      .then(res => {
-        const meal = {
-          calories: res.calories,
-          ingredients: res.ingredients,
-          id: undefined,
-          name: newMeal.name,
-          recipe: res.recipe
-        }
-        const newMeals = this.mealArray(meal)
-        this.setState({
-          meals: newMeals
-        })
+  updateMealList = newMeal => {
+    edamunApi.searchMeal(newMeal.uri).then(res => {
+      const meal = {
+        calories: res.calories,
+        ingredients: res.ingredients,
+        id: undefined,
+        name: newMeal.name,
+        recipe: res.recipe
+      }
+      const newMeals = this.mealArray(meal)
+      this.setState({
+        meals: newMeals
+      })
     })
   }
 
-  mealArray = (meal) => {
+  mealArray = meal => {
     let newArray = this.state.meals.slice()
     if (meal) {
-      const unique = newArray.every((mealObject) => { return mealObject.name !== meal.name })
+      const unique = newArray.every(mealObject => {
+        return mealObject.name !== meal.name
+      })
       if (unique === true) {
         newArray.push(meal)
         return newArray
@@ -129,9 +142,9 @@ class MealPlanner extends Component {
       }
     }
     let results = []
-    newArray.map((meal) => {
+    newArray.map(meal => {
       return results.push(
-        <Meal 
+        <Meal
           key={shortid.generate()}
           name={meal.name}
           disabled={true}
@@ -143,58 +156,75 @@ class MealPlanner extends Component {
   }
 
   render() {
-    const { name, ingredients, calories, recipe, removable } = this.state.infoCard
+    const {
+      name,
+      ingredients,
+      calories,
+      recipe,
+      removable
+    } = this.state.infoCard
     const mealsArray = this.mealArray()
-    const ingredientsArray = ingredients.map((ingredient) => {
-        return <List.Item
-          key={shortid.generate()}>
-           {ingredient} 
+    const ingredientsArray = ingredients.map(ingredient => {
+      return (
+        <List.Item key={shortid.generate()}>
+          {ingredient}
         </List.Item>
-      })
+      )
+    })
     return (
       <Container>
         <Segment>
-          <Grid stackable textAlign='center'>
-            <Header as='h1' style={{marginTop: '.5em'}}>{this.props.name}</Header>
-              <Grid.Row columns={2}>
-                <Grid.Column>
-                  <MealList 
-                    meals={mealsArray} 
-                    mealsLength={mealsArray.length}
-                    handleUpdate={this.updateMealList}
-                  />
-                  <InfoCard
-                    handleDelete={this.handleDelete}
-                    name={name}
-                    removable={removable}
-                    ingredients={ingredientsArray} 
-                    calories={calories} 
-                    recipe={recipe}
-                  />
-                </Grid.Column>
-                <Grid.Column>
-                  <Search 
-                    handleInfo={(meal) => this.handleInfo(meal)}
-                    searchMeal={edamunApi.searchMeal}
-                    searchLoading={this.props.searchLoading}
-                    searchResults={this.props.searchResults}
-                    requestMeals={this.props.requestMeals}
-                  />
-                </Grid.Column>
-              </Grid.Row>
+          <Grid stackable textAlign="center">
+            <Header as="h1" style={{ marginTop: '.5em' }}>
+              {this.props.name}
+            </Header>
+            <Grid.Row columns={2}>
+              <Grid.Column>
+                <MealList
+                  meals={mealsArray}
+                  mealsLength={mealsArray.length}
+                  handleUpdate={this.updateMealList}
+                />
+                <InfoCard
+                  handleDelete={this.handleDelete}
+                  name={name}
+                  removable={removable}
+                  ingredients={ingredientsArray}
+                  calories={calories}
+                  recipe={recipe}
+                />
+              </Grid.Column>
+              <Grid.Column>
+                <Search
+                  handleInfo={meal => this.handleInfo(meal)}
+                  searchMeal={edamunApi.searchMeal}
+                  searchLoading={this.props.searchLoading}
+                  searchResults={this.props.searchResults}
+                  requestMeals={this.props.requestMeals}
+                />
+              </Grid.Column>
+            </Grid.Row>
 
-              <Grid.Row columns={2}>
-                <Grid.Column>
-                  <Button fluid color='green' onClick={() => this.handleSave(this.props.id, this.state)}>Save</Button>
-                </Grid.Column>
-                <Grid.Column>
-                  <Button fluid color='grey' onClick={this.props.history.goBack}>Cancel</Button>
-                </Grid.Column>
-              </Grid.Row>
+            <Grid.Row columns={2}>
+              <Grid.Column>
+                <Button
+                  fluid
+                  color="green"
+                  onClick={() => this.handleSave(this.props.id, this.state)}
+                >
+                  Save
+                </Button>
+              </Grid.Column>
+              <Grid.Column>
+                <Button fluid color="grey" onClick={this.props.history.goBack}>
+                  Cancel
+                </Button>
+              </Grid.Column>
+            </Grid.Row>
           </Grid>
         </Segment>
       </Container>
-    );
+    )
   }
 }
 

@@ -1,4 +1,4 @@
-const validate = (values) => {
+const validate = values => {
   const errors = {} // eslint-disable-next-line
   const Symbols = /(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/
 
@@ -33,4 +33,4 @@ const validate = (values) => {
   return errors
 }
 
-export default validate;
+export default validate

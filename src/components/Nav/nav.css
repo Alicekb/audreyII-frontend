@@ -4,9 +4,9 @@
 }
 
 .nav-container {
- float: left;
- margin: 0;
- width: 7%;
- background: #fff;
- min-height: 100vh;
+  float: left;
+  margin: 0;
+  width: 7%;
+  background: #fff;
+  min-height: 100vh;
 }

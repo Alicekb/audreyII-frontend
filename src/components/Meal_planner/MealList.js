@@ -26,10 +26,10 @@ function collect(connect, monitor) {
 
 const propTypes = {
   connectDropTarget: PropTypes.func.isRequired
-};
+}
 
 class MealList extends Component {
-  render(){
+  render() {
     const { meals, connectDropTarget } = this.props
     return connectDropTarget(
       <div>

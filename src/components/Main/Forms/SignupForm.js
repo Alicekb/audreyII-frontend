@@ -1,28 +1,28 @@
 import React, { Component } from 'react'
-import {Field, reduxForm} from 'redux-form'
+import { Field, reduxForm } from 'redux-form'
 import RenderField from './RenderField.js'
 import { Form, Button } from 'semantic-ui-react'
 import validate from './Validate'
 import PropTypes from 'prop-types'
 
 class SignupForm extends Component {
-  static propTypes = { 
-    handleSubmit: PropTypes.func 
+  static propTypes = {
+    handleSubmit: PropTypes.func
   }
 
   handleSubmit(data) {
     this.props.onSubmit(data)
   }
   render() {
-    const {handleSubmit, pristine, reset, submitting, invalid} = this.props
+    const { handleSubmit, pristine, reset, submitting, invalid } = this.props
     return (
       <Form
-        style={{padding: '2em', color: '#83B692'}}
+        style={{ padding: '2em', color: '#83B692' }}
         onSubmit={handleSubmit(this.handleSubmit.bind(this))}
       >
         <Form.Field>
           <Field
-            label='Username:'
+            label="Username:"
             name="username"
             type="text"
             component={RenderField}
@@ -31,7 +31,7 @@ class SignupForm extends Component {
 
         <Form.Field>
           <Field
-            label='Email:'
+            label="Email:"
             name="email"
             type="email"
             component={RenderField}
@@ -40,26 +40,38 @@ class SignupForm extends Component {
 
         <Form.Field>
           <Field
-            label='Password:'
+            label="Password:"
             name="password"
             type="password"
             component={RenderField}
           />
-          </Form.Field>
+        </Form.Field>
 
         <Form.Field>
           <Field
-            label='Password Confirmation:'
+            label="Password Confirmation:"
             name="password_confirmation"
             type="password"
             component={RenderField}
           />
-          </Form.Field>
+        </Form.Field>
 
-          <Button basic color='green' type="submit" disabled={pristine || submitting || invalid}>Submit</Button>
-          <Button basic type="button" disabled={pristine || submitting} onClick={reset}>
-            Clear Values
-          </Button>
+        <Button
+          basic
+          color="green"
+          type="submit"
+          disabled={pristine || submitting || invalid}
+        >
+          Submit
+        </Button>
+        <Button
+          basic
+          type="button"
+          disabled={pristine || submitting}
+          onClick={reset}
+        >
+          Clear Values
+        </Button>
       </Form>
     )
   }
@@ -71,4 +83,3 @@ SignupForm = reduxForm({
 })(SignupForm)
 
 export default SignupForm
-
