@@ -1,9 +1,9 @@
-import { reset, SubmissionError } from 'redux-form';
-import sessionApi from '../api/SessionApi';
+import { reset, SubmissionError } from 'redux-form'
+import sessionApi from '../api/SessionApi'
 
 const authRequest = () => {
   return {
-    type: 'AUTHENTICATION_REQUEST',
+    type: 'AUTHENTICATION_REQUEST'
   }
 }
 
@@ -15,7 +15,7 @@ const authSuccess = (user, token) => {
   }
 }
 
-const authFailure = (errors) => {
+const authFailure = errors => {
   return {
     type: 'AUTHENTICATION_FAILURE',
     errors: errors
@@ -28,14 +28,16 @@ const signout = () => {
   }
 }
 
-export const signup = (userData) => {
+export const signup = userData => {
   return dispatch => {
     dispatch(authRequest())
-    return sessionApi.new(userData)
+    return sessionApi
+      .new(userData)
       .then(res => {
-        return sessionApi.auth(res)
+        return sessionApi
+          .auth(res)
           .then(res => {
-            const { user, auth_token} = res
+            const { user, auth_token } = res
             localStorage.setItem('token', auth_token)
             dispatch(authSuccess(user, auth_token))
             dispatch(reset('signup'))
@@ -53,13 +55,14 @@ export const signup = (userData) => {
   }
 }
 
-export const login = (userData) => {
+export const login = userData => {
   return dispatch => {
     dispatch(authRequest())
-    return sessionApi.auth(userData)
+    return sessionApi
+      .auth(userData)
       .then(res => {
-        const { user, auth_token} = res
-        localStorage.setItem('token', auth_token)        
+        const { user, auth_token } = res
+        localStorage.setItem('token', auth_token)
         dispatch(authSuccess(user, auth_token))
         dispatch(reset('login'))
       })
@@ -70,10 +73,11 @@ export const login = (userData) => {
   }
 }
 
-export const tokenSignup = (token) => {
+export const tokenSignup = token => {
   return dispatch => {
     dispatch(authRequest())
-    return sessionApi.refresh(token)
+    return sessionApi
+      .refresh(token)
       .then(res => {
         const { user } = res
         dispatch(authSuccess(user))

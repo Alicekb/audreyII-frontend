@@ -1,8 +1,8 @@
-import audreyApi from '../api/AudreyApi';
+import audreyApi from '../api/AudreyApi'
 
 const weekRequest = () => {
   return {
-    type: 'WEEK_REQUEST',
+    type: 'WEEK_REQUEST'
   }
 }
 
@@ -14,7 +14,7 @@ const weekSuccess = (days, ingredients) => {
   }
 }
 
-const weekFailure = (errors) => {
+const weekFailure = errors => {
   return {
     type: 'WEEK_FAILURE',
     errors: errors
@@ -30,15 +30,22 @@ const weekReset = () => {
 export const fetchWeek = (id, url, token) => {
   return dispatch => {
     dispatch(weekRequest())
-    return audreyApi.getData(id, url, token)
+    return audreyApi
+      .getData(id, url, token)
       .then(res => {
         const { days, meals } = res
-        const newArray = meals.map((meal) => { return meal.ingredients })
-        const ingredientsArray = newArray.reduce((a, b) => { return a.concat(b)}, [])
-        const ingredients = ingredientsArray.map((ingredient) => { 
-          return ingredient.replace(/(?:^|\s)\S/g, (a) => { return a.toUpperCase() })
-         })
-         
+        const newArray = meals.map(meal => {
+          return meal.ingredients
+        })
+        const ingredientsArray = newArray.reduce((a, b) => {
+          return a.concat(b)
+        }, [])
+        const ingredients = ingredientsArray.map(ingredient => {
+          return ingredient.replace(/(?:^|\s)\S/g, a => {
+            return a.toUpperCase()
+          })
+        })
+
         dispatch(weekSuccess(days, ingredients))
       })
       .catch(error => {

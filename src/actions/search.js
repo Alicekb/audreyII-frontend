@@ -1,19 +1,19 @@
-import edamunApi from '../api/EdamunApi';
+import edamunApi from '../api/EdamunApi'
 
 const searchRequest = () => {
   return {
-    type: 'SEARCH_REQUEST',
+    type: 'SEARCH_REQUEST'
   }
 }
 
-const searchSuccess = (results) => {
+const searchSuccess = results => {
   return {
     type: 'SEARCH_SUCCESS',
     results: results
   }
 }
 
-const searchFailure = (errors) => {
+const searchFailure = errors => {
   return {
     type: 'SEARCH_FAILURE',
     errors: errors
@@ -26,25 +26,25 @@ const searchReset = () => {
   }
 }
 
-export const requestMeals = (search) => {
+export const requestMeals = search => {
   return dispatch => {
     dispatch(searchRequest())
-    return edamunApi.searchMeals(search)
-    .then(res => {
-      const results = res.hits.map((meal) => {
-        return {
-          name: meal.recipe.label,
-          uri: meal.recipe.uri
-        }
+    return edamunApi
+      .searchMeals(search)
+      .then(res => {
+        const results = res.hits.map(meal => {
+          return {
+            name: meal.recipe.label,
+            uri: meal.recipe.uri
+          }
+        })
+        dispatch(searchSuccess(results))
       })
-      dispatch(searchSuccess(results))
-    })
-    .catch(error => {
-      dispatch(searchFailure(error))
-    })
-
+      .catch(error => {
+        dispatch(searchFailure(error))
+      })
   }
-} 
+}
 
 export const resetSearch = () => {
   return dispatch => {
