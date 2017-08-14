@@ -5,7 +5,7 @@ const initState = {
 }
 
 export default (state = initState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'SEARCH_REQUEST':
       return {
         ...state,
@@ -26,14 +26,14 @@ export default (state = initState, action) => {
         errors: action.errors || {}
       }
 
-      case 'SEARCH_RESET':
-        return {
-          loading: false,
-          results: [],
-          errors: {}
-        }
+    case 'SEARCH_RESET':
+      return {
+        loading: false,
+        results: [],
+        errors: {}
+      }
 
     default:
-      return state;
+      return state
   }
 }
