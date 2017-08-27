@@ -17,7 +17,7 @@ export default {
     }
     const body = JSON.stringify({ user: userData })
 
-    return fetch('/signup', {
+    return fetch(`/api/signup`, {
       method: 'post',
       headers: headers,
       body: body
@@ -32,7 +32,7 @@ export default {
       'Content-Type': 'application/json'
     }
     const body = JSON.stringify(userData)
-    return fetch('/auth_user', {
+    return fetch('/api/auth_user', {
       method: 'post',
       headers: headers,
       body: body
@@ -47,10 +47,7 @@ export default {
       'Content-Type': 'application/json',
       Authorization: userToken
     }
-    return fetch('/auth_token', {
-      method: 'get',
-      headers: headers
-    })
+    return fetch('/api/auth_token', { method: 'get', headers: headers })
       .then(parseRes)
       .catch(error => console.log(error))
   }
