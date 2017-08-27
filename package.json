@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://audrey-api.herokuapp.com/",
   "devDependencies": {
     "react-scripts": "1.0.0",
     "semantic-ui": "^2.2.10"
