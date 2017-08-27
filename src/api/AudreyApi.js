@@ -38,7 +38,7 @@ export default {
       }
     })
 
-    return fetch(`/v1/meals`, {
+    return fetch(`https://audrey-api.herokuapp.com/v1/meals`, {
       method: 'post',
       headers: headers,
       body: body
@@ -50,7 +50,7 @@ export default {
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + token
     }
-    return fetch(`/v1/meals/${id}`, {
+    return fetch(`https://audrey-api.herokuapp.com/v1/meals/${id}`, {
       method: 'delete',
       headers: headers
     }).then(parseRes)
@@ -61,7 +61,7 @@ export default {
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + token
     }
-    return fetch(`/v1/weeks`, {
+    return fetch(`https://audrey-api.herokuapp.com/v1/weeks`, {
       method: 'post',
       headers: headers,
       body: JSON.stringify({
