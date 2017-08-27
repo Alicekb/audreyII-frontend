@@ -17,7 +17,7 @@ export default {
     }
     const body = JSON.stringify({ user: userData })
 
-    return fetch(`/signup`, {
+    return fetch('/signup', {
       method: 'post',
       headers: headers,
       body: body
