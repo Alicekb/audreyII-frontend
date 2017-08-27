@@ -14,7 +14,7 @@ class Week extends Component {
   componentDidMount() {
     this.props.fetchWeek(
       this.props.location.state.id,
-      'http://localhost:3001/v1/weeks/',
+      'https://audrey-api.herokuapp.com/v1/weeks/',
       localStorage.getItem('token')
     )
   }

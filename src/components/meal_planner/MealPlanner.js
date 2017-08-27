@@ -38,7 +38,7 @@ class MealPlanner extends Component {
     return audreyApi
       .getData(
         this.props.id,
-        'http://localhost:3001/v1/days/',
+        'https://audrey-api.herokuapp.com/v1/days/',
         localStorage.getItem('token')
       )
       .then(res => {

@@ -22,7 +22,7 @@ export default class Calendar extends Component {
     return audreyApi
       .getData(
         this.props.id,
-        'http://localhost:3001/v1/calendars/',
+        'https://audrey-api.herokuapp.com/v1/calendars/',
         localStorage.getItem('token')
       )
       .then(res => {

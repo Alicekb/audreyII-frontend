@@ -1,8 +1,8 @@
 import fetch from 'isomorphic-fetch'
 
-const NEW_URL = 'http://localhost:3001/signup'
-const AUTH_URL = 'http://localhost:3001/auth_user'
-const TOKEN_URL = 'http://localhost:3001/auth_token'
+const NEW_URL = 'https://audrey-api.herokuapp.com/signup'
+const AUTH_URL = 'https://audrey-api.herokuapp.com/auth_user'
+const TOKEN_URL = 'https://audrey-api.herokuapp.com/auth_token'
 
 const parseRes = res => {
   return res.json().then(json => {
