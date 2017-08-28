@@ -28,6 +28,8 @@ class App extends Component {
   componentDidMount() {
     const token = localStorage.getItem('token')
 
+    fetch('https://audrey-api.herokuapp.com/')
+
     if (!!token) {
       this.props.tokenSignup(token)
     }
