@@ -28,26 +28,29 @@ class App extends Component {
   componentDidMount() {
     const token = localStorage.getItem('token')
 
-    fetch('https://audrey-api.herokuapp.com/')
-
-    if (!!token) {
-      this.props.tokenSignup(token)
-    }
+    fetch('https://audrey-api.herokuapp.com/').then(res => {
+      if (!!token) {
+        this.props.tokenSignup(token)
+      }
+    })
   }
 
   render() {
-    const PrivateRoute = ({ component: Component, ...rest }) =>
+    const PrivateRoute = ({ component: Component, ...rest }) => (
       <Route
         {...rest}
         render={props =>
-          this.props.isAuthenticated
-            ? <Component {...props} />
-            : <Redirect
-                to={{
-                  pathname: '/'
-                }}
-              />}
+          this.props.isAuthenticated ? (
+            <Component {...props} />
+          ) : (
+            <Redirect
+              to={{
+                pathname: '/'
+              }}
+            />
+          )}
       />
+    )
     return (
       <Router>
         <div>
@@ -66,27 +69,31 @@ class App extends Component {
               path="/week/:name/:id"
               render={({ match }) => {
                 const { id, name } = match.params
-                return this.props.isAuthenticated
-                  ? <MealPlanner
-                      id={id}
-                      name={name}
-                      searchReset={this.props.resetSearch}
-                      searchLoading={this.props.searchLoading}
-                      searchResults={this.props.searchResults}
-                      requestMeals={this.props.requestMeals}
-                    />
-                  : <Redirect push to="/welcome" />
+                return this.props.isAuthenticated ? (
+                  <MealPlanner
+                    id={id}
+                    name={name}
+                    searchReset={this.props.resetSearch}
+                    searchLoading={this.props.searchLoading}
+                    searchResults={this.props.searchResults}
+                    requestMeals={this.props.requestMeals}
+                  />
+                ) : (
+                  <Redirect push to="/welcome" />
+                )
               }}
             />
             <PrivateRoute
               path="/calendar"
-              component={() =>
-                <Calendar id={this.props.currentUser.current_calendar} />}
+              component={() => (
+                <Calendar id={this.props.currentUser.current_calendar} />
+              )}
             />
             <PrivateRoute
               path="/welcome"
-              component={() =>
-                <Welcome name={this.props.currentUser.username} />}
+              component={() => (
+                <Welcome name={this.props.currentUser.username} />
+              )}
             />
             <PrivateRoute component={NoMatch} />
           </Switch>
